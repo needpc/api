@@ -1,0 +1,12 @@
+node_modules/
+config/ssl/*
+.DS_Store
+*~
+./**/.DS_Store
+**/.DS_Store
+.idea/
+.tmp/
+*.log
+public/index.html
+app/config/ssl/*.crt
+app/config/ssl/*.key
