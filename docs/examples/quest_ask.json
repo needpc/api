@@ -1,0 +1,35 @@
+{
+    "error": false,
+    "data": [
+        {
+            "id": 1,
+            "question": "Quel prix maximum etes vous pret a depencer ?",
+            "domain": "price",
+            "reponses": [
+                "+ 500 euros",
+                "+ 1000 euros",
+                "+ 2000 euros"
+            ],
+            "indice": [
+                "500",
+                "1000",
+                "2000"
+            ]
+        },
+        {
+            "id": 2,
+            "question": "Quel taile d'ecran ?",
+            "domain": "display",
+            "reponses": [
+                "13 pouces",
+                "15 pouces",
+                "+ 17 pouces"
+            ],
+            "indice": [
+                "13",
+                "15",
+                "17"
+            ]
+        }
+    ]
+}

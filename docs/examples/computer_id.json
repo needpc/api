@@ -1,0 +1,66 @@
+{
+    "error": false,
+    "data": [
+        {
+            "id": 1,
+            "model": "GET5000",
+            "designation": "GET",
+            "picture": "https://media.ldlc.com/ld/products/00/04/16/74/LD0004167474_2_0004167648.jpg",
+            "connector_avalaible": "HDMI x 1, VGA x 1",
+            "size_width": 100,
+            "size_height": 100,
+            "is_os_included": true,
+            "is_webcam_included": false,
+            "is_wifi_included": false,
+            "is_vr_ready": false,
+            "garanty_year": 2,
+            "updatedAt": "2017-09-04T22:00:00.000Z",
+            "createdAt": "2017-09-03T22:00:00.000Z",
+            "os": {
+                "name": "Windows 7"
+            },
+            "networks": {
+                "name": "10/100/1000"
+            },
+            "keyboards": {
+                "language_iso": "FR_fr",
+                "type": "AZERTY"
+            },
+            "graphics": {
+                "name": "Nvidia GTX 1070",
+                "vram_giga": 16,
+                "memory_capacities": null,
+                "frequency": 2000
+            },
+            "display": {
+                "type": "LCD",
+                "resolution": "1920x1080",
+                "refresh_rate": 120,
+                "size": 120,
+                "format": "16:10"
+            },
+            "disks": {
+                "disk_main": "512 SSD",
+                "disk_secondary": "1To HDD"
+            },
+            "cpus": {
+                "name": "i7 6700K",
+                "brand": "Intel",
+                "frequency": 3.7
+            },
+            "colors": {
+                "name": "black",
+                "picker": null
+            },
+            "chipsets": {
+                "name": "CTE"
+            },
+            "brands": {
+                "name": "Asus"
+            },
+            "activity": {
+                "name": "Games"
+            }
+        }
+    ]
+}

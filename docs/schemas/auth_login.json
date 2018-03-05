@@ -3,8 +3,12 @@
   "$schema": "http://json-schema.org/draft-03/schema",
   "type": "object",
   "properties": {
-    "message": {
-      "required": false,
+    "email": {
+      "required": true,
+      "type": "string"
+    },
+    "password": {
+      "required": true,
       "type": "string"
     }
   }
