@@ -1,21 +1,81 @@
 var sequelize  = require('sequelize');
 var path       = require('path');
 
-var Middleware = require(path.join(__dirname, '/middleware'));
-var CExample    = require(path.join(__dirname, '/controllers/example'));
-var CError      = require(path.join(__dirname, '/controllers/error'));
+var Middleware  = require(path.join(__dirname, '/middleware'));
+
+var CError = require(path.join(__dirname, '/controllers/error'));
+var CInjection  = require(path.join(__dirname, '/controllers/injections/injection'));
+var CSearchComputer = require(path.join(__dirname, '/controllers/search/computers/find'));
+var CSearchComputerPrices = require(path.join(__dirname, '/controllers/show/prices/find'));
+var CSearchOs = require(path.join(__dirname, '/controllers/search/os/find'));
+var CSearchGraphics = require(path.join(__dirname, '/controllers/search/graphics/find'));
+var CSearchColors = require(path.join(__dirname, '/controllers/search/colors/find'));
+var CSearchCpus = require(path.join(__dirname, '/controllers/search/cpus/find'));
+var CSearchChipsets = require(path.join(__dirname, '/controllers/search/chipsets/find'));
+var CSearchBrands = require(path.join(__dirname, '/controllers/search/brands/find'));
+var CSearchKeyboards = require(path.join(__dirname, '/controllers/search/keyboards/find'));
+var CSearchActivities = require(path.join(__dirname, '/controllers/search/activities/find'));
+var CSearchquestions = require(path.join(__dirname, '/controllers/search/questions/find'));
+
+var CShowComputers = require(path.join(__dirname, '/controllers/show/computers/find'));
 
 module.exports = function(app, passport) {
 
-    app.route('/v1/example')
-        .get(CExample.Get)
-        .post(CExample.Post);
+    app.get('/', function (req, res) {
+        CError.http_success(req, res, { code: 200, message: "Hello World !" });
+    });
 
-    app.route('/v1/example/:id')
-        .get(CExample.GetId)
-        .put(CExample.PutId)
-        .delete(CExample.DeleteId);
+    //////////////////////////////////////////////
+    // Data Injection
+    //////////////////////////////////////////////
+    app.route('/api/v1/internal/injection/')
+        .post(CInjection.Post);
 
+    app.route('/api/v1/internal/injection/:id')
+        .get(CInjection.GetId)
+        .put(CInjection.PutId)
+        .delete(CInjection.DeleteId);
+    //////////////////////////////////////////////
+
+    //////////////////////////////////////////////
+    // Search all components
+    //////////////////////////////////////////////
+    app.route('/api/v1/search/computers/')
+        .get(CSearchComputer.Get);
+    
+    app.route('/api/v1/search/os/')
+        .get(CSearchOs.Get);
+    
+    app.route('/api/v1/search/brands/')
+        .get(CSearchBrands.Get);
+    
+    app.route('/api/v1/search/graphics/')
+        .get(CSearchGraphics.Get);
+
+    app.route('/api/v1/search/colors/')
+        .get(CSearchColors.Get);
+    
+    app.route('/api/v1/search/cpus/')
+        .get(CSearchCpus.Get);
+    
+    app.route('/api/v1/search/chipsets/')
+        .get(CSearchChipsets.Get);
+    
+    app.route('/api/v1/search/keyboards/')
+        .get(CSearchKeyboards.Get);
+    
+    app.route('/api/v1/search/activities/')
+        .get(CSearchActivities.Get);
+
+    app.route('/api/v1/computers/:id')
+        .get(CShowComputers.GetId);
+    
+    app.route('/api/v1/computers/prices/:id')
+        .get(CSearchComputerPrices.GetId);
+
+    app.route('/api/v1/ask')
+        .get(CSearchquestions.GetQuestion);
+    //////////////////////////////////////////////
 
     // =====================================
     // LOGIN ===============================
@@ -24,15 +84,19 @@ module.exports = function(app, passport) {
         passport.authenticate('local-login', function(err, user, info)
         {
             if (err)
-                return CError.http_error(req, res, { code: 500 });
+                CError.http_error(req, res, { code: 500 });
             if (user)
             {
-                req.session.id = user.dataValues.id;
-                req.session.email = user.dataValues.email;
-                return CError.http_success(req, res, { code: 200, message: info.message });
-            }
+                req.session.user = {};
+                req.session.user.id = user.dataValues.id;
+                req.session.user.email = user.dataValues.email;
+                console.log(req.session);
 
-            return CError.http_error(req, res, { code: 400 });
+                return CError.http_success(req, res, { code: 200, message: info.message });
+            } else {
+                // user not found (404 is very explicite, so 400)
+                CError.http_error(req, res, { code: 400 });
+            }
         })(req, res, next);
     });
 
