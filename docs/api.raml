@@ -1,135 +1,31 @@
 #%RAML 1.0
 ---
-title: New
-baseUri: http://api.samplehost.com/{version}
+title: API NeedPC
+version: v1
+baseUri: https://www.needpc.com/api/{version}
 schemas:
-  - hello_word: !include schemas/hello_word.json
-/:
-  get:
-    responses:
-      200:
-        description: Hello world !
-        body:
-          application/json:
-            schema: hello_word
-            example: !include ./examples/hello_word.json    
-/example:
-  get:
-    responses:
-      200:
-        description: Hello world !
-        body:
-          application/json:
-            schema: hello_word
-            example: !include ./examples/hello_word.json
-      400:
-        description: Error 400
-        body:
-          application/json:
-            schema: 400
-            example: !include ./errors/404.json
-      500:
-        description: Error 500
-        body:
-          application/json:
-            schema: 500
-            example: !include ./errors/500.json
-  post:
-    responses:
-      200:
-        description: Hello world !
-        body:
-          application/json:
-            schema: hello_word
-            example: !include ./examples/hello_word.json
-      400:
-        description: Error 400
-        body:
-          application/json:
-            schema: 400
-            example: !include ./errors/404.json
-      500:
-        description: Error 500
-        body:
-          application/json:
-            schema: 500
-            example: !include ./errors/500.json
-  /{Id}:
-    get:
-      responses:
-        200:
-          description: Hello world !
-          body:
-            application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
-        400:
-          description: Error 400
-          body:
-            application/json:
-              schema: 400
-              example: !include ./errors/404.json
-        500:
-          description: Error 500
-          body:
-            application/json:
-              schema: 500
-              example: !include ./errors/500.json
-    put:
-      responses:
-        200:
-          description: Hello world !
-          body:
-            application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
-        400:
-          description: Error 400
-          body:
-            application/json:
-              schema: 400
-              example: !include ./errors/404.json
-        500:
-          description: Error 500
-          body:
-            application/json:
-              schema: 500
-              example: !include ./errors/500.json
-    delete:
-      responses:
-        200:
-          description: Hello world !
-          body:
-            application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
-        400:
-          description: Error 400
-          body:
-            application/json:
-              schema: 400
-              example: !include ./errors/404.json
-        500:
-          description: Error 500
-          body:
-            application/json:
-              schema: 500
-              example: !include ./errors/500.json
+  - login: !include schemas/auth_login.json
+
 /auth:
   /login:
     post:
       responses:
         200:
-          description: Hello world !
+          description: Login
           body:
-            application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
+            application/x-www-form-urlencoded:
+              properties:
+                email:
+                  description: Email pour l'auth.
+                  type: string
+                password:
+                  description: Password pour l'auth.
+                  type: string
         400:
-          description: Error 400
+          description: Error 404
           body:
             application/json:
-              schema: 400
+              schema: 404
               example: !include ./errors/404.json
         500:
           description: Error 500
@@ -141,13 +37,24 @@ schemas:
     post:
       responses:
         200:
-          description: Hello world !
+          description: Create
+          body:
+            application/x-www-form-urlencoded:
+              properties:
+                email:
+                  description: Email pour l'auth.
+                  type: string
+                password:
+                  description: Password pour l'auth.
+                  type: string
+        201:
+          description: Created
           body:
             application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
+              schema: 201
+              example: !include ./errors/201.json
         400:
-          description: Error 400
+          description: Error 404
           body:
             application/json:
               schema: 404
@@ -158,34 +65,400 @@ schemas:
             application/json:
               schema: 500
               example: !include ./errors/500.json
+  /islogged:
+    get:
+      responses:
+        200:
+          description: Check loggin
+          body:
+            application/json:
+              schema: IsLogged
+              example: !include ./examples/auth_islogged.json
   /logout:
     get:
       responses:
         200:
-          description: Hello world !
+          description: Logout
           body:
             application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
+              schema: Logout
+              example: !include ./examples/auth_logout.json
+
+/search:
+  /computers/:
+    get:
+      queryParameters:
+        model:
+          displayName: Model
+          type: string
+          description: Model a rechercher (PostgreSQL Like)
+          example: GTe5000
+          required: false
+        webcam_included:
+          displayName: Webcam included
+          type: boolean
+          description: Check si la webcam est presente ou non
+          example: true
+          required: false
+        os_included:
+          displayName: OS included
+          type: boolean
+          description: Check si l'OS est inclut ou non
+          example: false
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Limite de resultat (default: 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_computers
+              example: !include ./examples/search_computers.json
         400:
           description: Error 400
           body:
             application/json:
               schema: 400
               example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
         500:
           description: Error 500
           body:
             application/json:
               schema: 500
               example: !include ./errors/500.json
-/admin:
-  /dashboard:
+  /keyboards/:
+    get:
+      queryParameters:
+        name:
+          displayName: Keyboard
+          type: string
+          description: Type de clavier a rechercher (PostgreSQL Like value%)
+          example: AZERTY
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_keyboards
+              example: !include ./examples/search_keyboards.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /graphics/:
+    get:
+      queryParameters:
+        name:
+          displayName: Graphics
+          type: string
+          description: Type de carte graphique a rechercher (PostgreSQL Like value%)
+          example: GTX 1080
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_graphics.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /os/:
+    get:
+      queryParameters:
+        name:
+          displayName: name
+          type: string
+          description: Type d'OS disponible (PostgreSQL Like value%)
+          example: Windows 7
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_os.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /brands/:
+    get:
+      queryParameters:
+        name:
+          displayName: name
+          type: string
+          description: Marques disponibles (PostgreSQL Like value%)
+          example: Asus
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_brands.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /chipsets/:
+    get:
+      queryParameters:
+        model:
+          displayName: name
+          type: string
+          description: Chipset disponibles (PostgreSQL Like value%)
+          example: GTX 1080
+          required: false
+        limit:
+          displayName: Limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_chipsets.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /cpus/:
+    get:
+      queryParameters:
+        name:
+          displayName: name
+          type: string
+          description: Cpus disponibles (PostgreSQL Like value%)
+          example: Intel i7 6700K
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_cpus.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+  /activities/:
+    get:
+      queryParameters:
+        name:
+          displayName: name
+          type: string
+          description: Activitees disponibles (PostgreSQL Like value%)
+          example: gamer
+          required: false
+        limit:
+          displayName: limit
+          type: integer
+          description: Nombre de resultats max (defaut 25)
+          example: 35
+          required: false
+      responses:
+        200:
+          description: Call
+          body:
+            application/json:
+              schema: search_graphics
+              example: !include ./examples/search_activities.json
+        400:
+          description: Error 400
+          body:
+            application/json:
+              schema: 400
+              example: !include ./errors/400.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+/computers:
+  /{id}:
     get:
       responses:
         200:
-          description: Hello world !
+          description: Produit
           body:
             application/json:
-              schema: hello_word
-              example: !include ./examples/hello_word.json
+              schema: Produit
+              example: !include ./examples/computer_id.json
+        404:
+          description: Error 404
+          body:
+            application/json:
+              schema: 404
+              example: !include ./errors/404.json
+        500:
+          description: Error 500
+          body:
+            application/json:
+              schema: 500
+              example: !include ./errors/500.json
+
+/ask:
+  get:
+    responses:
+      200:
+        description: Quest
+        body:
+          application/json:
+            schema: Ask
+            example: !include ./examples/quest_ask.json
+      404:
+        description: Error 404
+        body:
+          application/json:
+            schema: 404
+            example: !include ./errors/404.json
+      500:
+        description: Error 500
+          body:
+          application/json:
+            schema: 500
+            example: !include ./errors/500.json
+   

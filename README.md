@@ -94,4 +94,4 @@ Everything is already in place there is no more than to use :)
 ## License
 
 **The MIT License (MIT)**   
-Copyright (c) 2016-2017 Aurelien PERRIER
+Copyright (c) 2016-2018 Aurelien PERRIER

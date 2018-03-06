@@ -1,0 +1,182 @@
+{
+    "error": false,
+    "data": [
+        {
+            "id": 2,
+            "model": "Aurore Ci5P-8-S5",
+            "designation": "LDLC Aurore Ci5P-8-S5",
+            "picture": "https://media.ldlc.com/ld/products/00/04/45/56/LD0004455603_2.jpg",
+            "connector_avalaible": "none",
+            "size_width": 200,
+            "size_height": 300,
+            "is_os_included": true,
+            "is_webcam_included": true,
+            "is_wifi_included": true,
+            "is_vr_ready": false,
+            "garanty_year": 2,
+            "updatedAt": "2017-11-27T22:45:14.975Z",
+            "createdAt": "2017-11-27T22:45:14.975Z",
+            "activity": {
+                "name": "bureautique",
+                "description": null
+            },
+            "os": {
+                "name": "Ubuntu/Linux",
+                "description": null
+            },
+            "keyboards": {
+                "type": "AZERTY",
+                "description": null
+            },
+            "graphics": {
+                "brand_id": 12,
+                "model": "GeForce GT540M cuda",
+                "vram": null,
+                "frequency": null,
+                "description": null
+            },
+            "networks": {
+                "name": "Gigabit Ethernet",
+                "description": "1000/100/10"
+            },
+            "display": {
+                "type": "LCD",
+                "resolution": "1920x1080",
+                "size": "15",
+                "refresh_rate": 120,
+                "description": null
+            },
+            "disks": {
+                "brand_id": 14,
+                "model": "WD40EFRX Disque dur interne 3,5\"",
+                "space": "4To"
+            },
+            "colors": {
+                "name": "Rouge",
+                "picker": "#FF5733"
+            },
+            "brands": {
+                "name": "LDLC",
+                "description": null
+            }
+        },
+        {
+            "id": 1,
+            "model": "Aurore Ci3-4-H20",
+            "designation": "LDLC Aurore Ci3-4-H20",
+            "picture": "https://media.ldlc.com/ld/products/00/04/45/51/LD0004455112_2.jpg",
+            "connector_avalaible": "none",
+            "size_width": 200,
+            "size_height": 200,
+            "is_os_included": true,
+            "is_webcam_included": true,
+            "is_wifi_included": true,
+            "is_vr_ready": false,
+            "garanty_year": 2,
+            "updatedAt": "2017-11-27T22:45:14.975Z",
+            "createdAt": "2017-11-27T22:45:14.975Z",
+            "activity": {
+                "name": "gaming",
+                "description": null
+            },
+            "os": {
+                "name": "Windows 10",
+                "description": null
+            },
+            "keyboards": {
+                "type": "QWERTY",
+                "description": null
+            },
+            "graphics": {
+                "brand_id": 10,
+                "model": "Intel HD Graphics 5500",
+                "vram": null,
+                "frequency": null,
+                "description": null
+            },
+            "networks": {
+                "name": "Gigabit Ethernet",
+                "description": "1000/100/10"
+            },
+            "display": {
+                "type": "LCD Retina",
+                "resolution": "1920x1080",
+                "size": "13",
+                "refresh_rate": 120,
+                "description": null
+            },
+            "disks": {
+                "brand_id": 7,
+                "model": "Samsung SSD 850 EVO",
+                "space": null
+            },
+            "colors": {
+                "name": "Gris",
+                "picker": "#808080"
+            },
+            "brands": {
+                "name": "LDLC",
+                "description": null
+            }
+        },
+        {
+            "id": 3,
+            "model": "Swift 7 SF713-51-M8EJ Or",
+            "designation": "Acer Swift 7 SF713-51-M8EJ Or",
+            "picture": "https://media.ldlc.com/ld/products/00/03/93/45/LD0003934594_2_0004083678.jpg",
+            "connector_avalaible": "none",
+            "size_width": 200,
+            "size_height": 300,
+            "is_os_included": true,
+            "is_webcam_included": false,
+            "is_wifi_included": true,
+            "is_vr_ready": false,
+            "garanty_year": 2,
+            "updatedAt": "2017-11-27T22:45:14.975Z",
+            "createdAt": "2017-11-27T22:45:14.975Z",
+            "activity": {
+                "name": "navigation",
+                "description": null
+            },
+            "os": {
+                "name": "Windows 10",
+                "description": null
+            },
+            "keyboards": {
+                "type": "QWERTZ",
+                "description": null
+            },
+            "graphics": {
+                "brand_id": 12,
+                "model": "GeForce GTX 1080",
+                "vram": null,
+                "frequency": null,
+                "description": null
+            },
+            "networks": {
+                "name": "Fast Ethernet",
+                "description": "100/10"
+            },
+            "display": {
+                "type": "LCD Retina",
+                "resolution": "1920x1080",
+                "size": "13",
+                "refresh_rate": 120,
+                "description": null
+            },
+            "disks": {
+                "brand_id": 7,
+                "model": "Samsung SSD 850 EVO",
+                "space": null
+            },
+            "colors": {
+                "name": "Jaune",
+                "picker": "#FFFF00"
+            },
+            "brands": {
+                "name": "Acer",
+                "description": null
+            }
+        }
+    ]
+}

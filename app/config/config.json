@@ -2,9 +2,10 @@
   "development": {
     "username": "node",
     "password": "nodejs",
-    "database": "test-node",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "database": "dev-node",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false,
     "ssl": false
   },
   "staging": {
