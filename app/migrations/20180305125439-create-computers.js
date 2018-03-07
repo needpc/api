@@ -74,12 +74,6 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      priceId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'ComputersPrices', key: 'computerId' },
-        allowNull: true,
-        defaultValue: 1
-      },
       picture: {
         type: Sequelize.STRING(512),
         allowNull: true
@@ -112,11 +106,6 @@ module.exports = {
       height: {
         type: Sequelize.INTEGER,
         allowNull: true,
-      },
-      os_included: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
       },
       webcam: {
         type: Sequelize.BOOLEAN,

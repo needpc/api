@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     url: {
-      type: Sequelize.STRING(512),
+      type: DataTypes.STRING(512),
       allowNull: false
     },
     createdAt: {
@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        ComputersPrices.belongsTo(models.ComputersTraders);
       }
     }
   });

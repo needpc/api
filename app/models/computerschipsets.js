@@ -5,25 +5,25 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
-      type: Sequelize.INTEGER
+      type: DataTypes.INTEGER
     },
-    brand_id: {
-      type: Sequelize.INTEGER,
+    brandId: {
+      type: DataTypes.INTEGER,
       references: { model: 'ComputersBrands', key: 'id' },
       allowNull: false
     },
     name: {
-      type: Sequelize.STRING(64),
+      type: DataTypes.STRING(64),
       allowNull: true
     },
     description: {
-      type: Sequelize.STRING(512),
+      type: DataTypes.STRING(512),
       allowNull: true
     }
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        ComputersChipsets.belongsTo(models.ComputersBrands);
       }
     }
   });

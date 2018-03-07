@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    brand_id: {
+    brandId: {
       type: DataTypes.INTEGER,
       references: { model: 'UsersBrands', key: 'id' },
       allowNull: true
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        ComputersCpus.belongsTo(models.ComputersBrands);
       }
     }
   });

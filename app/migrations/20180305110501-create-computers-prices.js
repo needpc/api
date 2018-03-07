@@ -14,6 +14,7 @@ module.exports = {
       },
       traderId: {
         type: Sequelize.INTEGER,
+        references: { model: 'ComputersTraders', key: 'id' },
         allowNull: false
       },
       price: {

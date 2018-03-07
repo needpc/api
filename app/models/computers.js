@@ -9,67 +9,61 @@ module.exports = (sequelize, DataTypes) => {
     },
     brandId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersBrands', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     osId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersOs', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     keyboardId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersKeyboards', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     cpuId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersCpus', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     colorId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersColors', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     screenId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersScreens', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     graphicId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersGraphics', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     diskId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersDisks', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     activityId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersActivities', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     networkId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersNetworks', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     chipsetId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersChipsets', key: 'id' },
+      allowNull: true,
+      defaultValue: 1
+    },
+    PriceId: {
+      type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
@@ -89,10 +83,6 @@ module.exports = (sequelize, DataTypes) => {
     connector_available: {
       type: DataTypes.STRING(2048),
       allowNull: true,
-    },
-    url: {
-      type: DataTypes.STRING(2048),
-      allowNull: false,
     },
     weight: {
       type: DataTypes.FLOAT,
@@ -145,7 +135,16 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Computers.belongsTo(models.ComputersBrands, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersOs, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersKeyboards, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersCpus, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersScreens, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersGraphics, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersDisks, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersActivities, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersNetworks, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
+        Computers.belongsTo(models.ComputersChipsets, { onDelete: "CASCADE", foreignKey: { allowNull: false } });
       }
     }
   });

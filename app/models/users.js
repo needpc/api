@@ -48,7 +48,8 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: true,
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Users.belongsTo(models.UsersRoles);
+        Users.belongsTo(models.UsersAuth);
       }
     }
   });
