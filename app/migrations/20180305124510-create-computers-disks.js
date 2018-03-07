@@ -13,7 +13,7 @@ module.exports = {
         references: { model: 'ComputersBrands', key: 'id' },
         allowNull: true
       },
-      model: {
+      name: {
         type: Sequelize.STRING(256),
         allowNull: false
       },

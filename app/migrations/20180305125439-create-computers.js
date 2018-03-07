@@ -74,6 +74,12 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
+      priceId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'ComputersPrices', key: 'computerId' },
+        allowNull: true,
+        defaultValue: 1
+      },
       picture: {
         type: Sequelize.STRING(512),
         allowNull: true
@@ -90,10 +96,6 @@ module.exports = {
       connector_available: {
         type: Sequelize.STRING(2048),
         allowNull: true,
-      },
-      url: {
-        type: Sequelize.STRING(2048),
-        allowNull: false,
       },
       weight: {
         type: Sequelize.FLOAT,
@@ -125,10 +127,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true
-      },
-      garanty: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
       },
       active: {
         type: Sequelize.BOOLEAN,

@@ -8,16 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      computer_id: {
+      computerId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
-      trader_id: {
+      traderId: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
       price: {
         type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      url: {
+        type: Sequelize.STRING(512),
         allowNull: false
       },
       createdAt: {
