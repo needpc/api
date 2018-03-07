@@ -8,7 +8,7 @@ module.exports = {
         { name: 'Western Digital', description: "Fabrication de disques dur" },
         { name: 'AMD', description: "fabrication de CPU" },
         { name: 'Acer', description: "Fabrication PC" },
-        { name: 'Asus', description: "Fabrication PC" },
+        { name: 'Asus', description: "Fabrication PC, GPU" },
         { name: 'HP', description: "Manifacture, fabrication PC etc" },
         { name: 'Samsung', description: "Manifacture, fabrication PC etc" },
         { name: 'Apple', description: "Macintosh" },
@@ -20,6 +20,7 @@ module.exports = {
         { name: 'Toshiba', description: "Fabrication PC, disques" },
         { name: 'Seagate', description: "Fabrication disques" },
         { name: 'HGST', description: "Fabrication disques" },
+        { name: 'Nvidia', description: "Fabrication GPU" },
       ], {});
   },
 
