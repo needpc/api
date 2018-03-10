@@ -92,19 +92,19 @@ module.exports = {
         allowNull: true,
       },
       weight: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       length: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       width: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       height: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       webcam: {

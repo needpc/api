@@ -10,6 +10,7 @@ module.exports = {
       },
       computerId: {
         type: Sequelize.INTEGER,
+        references: { model: 'Computers', key: 'id' },
         allowNull: false
       },
       traderId: {
