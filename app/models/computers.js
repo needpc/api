@@ -52,11 +52,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: 1
     },
-    networkId: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 1
-    },
     chipsetId: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -98,6 +93,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     height: {
       type: DataTypes.STRING(16),
+      allowNull: true,
+    },
+    network: {
+      type: DataTypes.STRING(128),
       allowNull: true,
     },
     webcam: {
