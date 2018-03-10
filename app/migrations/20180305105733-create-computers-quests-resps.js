@@ -8,8 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      quest_id: {
+      questId: {
         type: Sequelize.INTEGER,
+        references: { model: 'ComputersQuests', key: 'id' },
         allowNull: false
       },
       resp: {

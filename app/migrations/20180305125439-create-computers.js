@@ -91,30 +91,21 @@ module.exports = {
         type: Sequelize.STRING(2048),
         allowNull: true,
       },
-      url: {
-        type: Sequelize.STRING(2048),
-        allowNull: false,
-      },
       weight: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       length: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       width: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
       },
       height: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(16),
         allowNull: true,
-      },
-      os_included: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
       },
       webcam: {
         type: Sequelize.BOOLEAN,
@@ -125,10 +116,6 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true
-      },
-      garanty: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
       },
       active: {
         type: Sequelize.BOOLEAN,

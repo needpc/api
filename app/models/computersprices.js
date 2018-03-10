@@ -7,16 +7,20 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    computer_id: {
+    computerId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    trader_id: {
+    traderId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
     price: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    url: {
+      type: DataTypes.STRING(512),
       allowNull: false
     },
     createdAt: {
@@ -30,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        ComputersPrices.belongsTo(models.ComputersTraders);
       }
     }
   });

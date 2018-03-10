@@ -9,67 +9,61 @@ module.exports = (sequelize, DataTypes) => {
     },
     brandId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersBrands', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     osId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersOs', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     keyboardId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersKeyboards', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     cpuId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersCpus', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     colorId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersColors', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     screenId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersScreens', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     graphicId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersGraphics', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     diskId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersDisks', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     activityId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersActivities', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     networkId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersNetworks', key: 'id' },
       allowNull: true,
       defaultValue: 1
     },
     chipsetId: {
       type: DataTypes.INTEGER,
-      references: { model: 'ComputersChipsets', key: 'id' },
+      allowNull: true,
+      defaultValue: 1
+    },
+    priceId: {
+      type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
@@ -90,30 +84,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(2048),
       allowNull: true,
     },
-    url: {
-      type: DataTypes.STRING(2048),
-      allowNull: false,
-    },
     weight: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.STRING(16),
       allowNull: true,
     },
     length: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(16),
       allowNull: true,
     },
     width: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(16),
       allowNull: true,
     },
     height: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(16),
       allowNull: true,
-    },
-    os_included: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
     },
     webcam: {
       type: DataTypes.BOOLEAN,
@@ -124,10 +109,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
-    },
-    garanty: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     active: {
       type: DataTypes.BOOLEAN,
@@ -145,7 +126,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        Computers.belongsTo(models.ComputersBrands, { onDelete: "CASCADE", foreignKey: 'brandId' });
+        Computers.belongsTo(models.ComputersOs, { onDelete: "CASCADE", foreignKey: 'osId' });
+        Computers.belongsTo(models.ComputersKeyboards, { onDelete: "CASCADE", foreignKey: 'keyboardId' });
+        Computers.belongsTo(models.ComputersCpus, { onDelete: "CASCADE", foreignKey: 'cpuId' });
+        Computers.belongsTo(models.ComputersScreens, { onDelete: "CASCADE", foreignKey: 'screenId' });
+        Computers.belongsTo(models.ComputersGraphics, { onDelete: "CASCADE", foreignKey: 'graphicId' });
+        Computers.belongsTo(models.ComputersDisks, { onDelete: "CASCADE", foreignKey: 'diskId' });
+        Computers.belongsTo(models.ComputersActivities, { onDelete: "CASCADE", foreignKey: 'activityId' });
+        Computers.belongsTo(models.ComputersNetworks, { onDelete: "CASCADE", foreignKey: 'networkId' });
+        Computers.belongsTo(models.ComputersChipsets, { onDelete: "CASCADE", foreignKey: 'chipsetId' });
+        Computers.hasMany(models.ComputersPrices, { onDelete: 'CASCADE', foreignKey: 'computerId' });
       }
     }
   });

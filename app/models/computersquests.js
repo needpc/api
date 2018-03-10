@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    activity_id: {
+    activityId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        ComputersQuests.belongsTo(models.ComputersActivities);
       }
     }
   });

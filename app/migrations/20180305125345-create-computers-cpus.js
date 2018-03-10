@@ -8,17 +8,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      brand_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'ComputersBrands', key: 'id' },
-        allowNull: true
-      },
       name: {
         type: Sequelize.STRING(128),
         allowNull: false
       },
       frequency: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING(16),
         allowNull: true
       },
       description: {
