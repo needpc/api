@@ -7,11 +7,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    brandId: {
-      type: DataTypes.INTEGER,
-      references: { model: 'UsersBrands', key: 'id' },
-      allowNull: true
-    },
     name: {
       type: DataTypes.STRING(128),
       allowNull: false
@@ -27,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        ComputersCpus.belongsTo(models.ComputersBrands);
+        // ComputersCpus.belongsTo(models.ComputersBrands);
       }
     }
   });
