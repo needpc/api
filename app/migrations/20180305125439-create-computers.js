@@ -62,12 +62,6 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      networkId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'ComputersNetworks', key: 'id' },
-        allowNull: true,
-        defaultValue: 1
-      },
       chipsetId: {
         type: Sequelize.INTEGER,
         references: { model: 'ComputersChipsets', key: 'id' },
@@ -107,12 +101,11 @@ module.exports = {
         type: Sequelize.STRING(16),
         allowNull: true,
       },
-      webcam: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: true
+      network: {
+        type: Sequelize.STRING(128),
+        allowNull: true,
       },
-      wifi: {
+      webcam: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true
