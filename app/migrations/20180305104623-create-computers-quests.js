@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ComputersQuests', {
+    return queryInterface.createTable('computers_quests', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,7 +10,7 @@ module.exports = {
       },
       activityId: {
         type: Sequelize.INTEGER,
-        references: { model: 'ComputersActivities', key: 'id' },
+        references: { model: 'computers_activities', key: 'id' },
         allowNull: false
       },
       quest: {
@@ -21,17 +21,17 @@ module.exports = {
 		    type: Sequelize.STRING(64),
         allowNull: false
       },
-      createdAt: {
+      createdat: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updatedat: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ComputersQuests');
+    return queryInterface.dropTable('computers_quests');
   }
 };

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ComputersQuestsResps', {
+    return queryInterface.createTable('computers_quests_resps', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,7 +10,7 @@ module.exports = {
       },
       questId: {
         type: Sequelize.INTEGER,
-        references: { model: 'ComputersQuests', key: 'id' },
+        references: { model: 'computers_quests', key: 'id' },
         allowNull: false
       },
       resp: {
@@ -24,6 +24,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ComputersQuestsResps');
+    return queryInterface.dropTable('computers_quests_resps');
   }
 };

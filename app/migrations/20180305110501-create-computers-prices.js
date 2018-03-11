@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ComputersPrices', {
+    return queryInterface.createTable('computers_prices', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -10,15 +10,15 @@ module.exports = {
       },
       computerId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Computers', key: 'id' },
+        references: { model: 'computers', key: 'id' },
         allowNull: false
       },
       traderId: {
         type: Sequelize.INTEGER,
-        references: { model: 'ComputersTraders', key: 'id' },
+        references: { model: 'computers_traders', key: 'id' },
         allowNull: false
       },
-      price: {
+      pricing: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -26,17 +26,13 @@ module.exports = {
         type: Sequelize.STRING(512),
         allowNull: false
       },
-      createdAt: {
+      createdat: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ComputersPrices');
+    return queryInterface.dropTable('computers_prices');
   }
 };
