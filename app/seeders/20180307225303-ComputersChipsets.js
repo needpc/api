@@ -2,13 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('ComputersChipsets', [
+    return queryInterface.bulkInsert('computers_chipsets', [
       { name: 'N/A', description: null },
-      { name: 'Intel® B250', description: null }
     ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('ComputersChipsets', null, {});
+    return queryInterface.bulkDelete('computers_chipsets', null, {});
   }
 };
