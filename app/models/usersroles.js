@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var UsersRoles = sequelize.define('UsersRoles', {
+  var users_roles = sequelize.define('users_roles', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return UsersRoles;
+  return users_roles;
 };

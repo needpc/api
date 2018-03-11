@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var ComputersChipsets = sequelize.define('ComputersChipsets', {
+  var computers_chipsets = sequelize.define('computers_chipsets', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -18,9 +18,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // ComputersChipsets.belongsTo(models.ComputersBrands);
+        // computers_chipsets.belongsTo(models.computers_brands);
       }
     }
   });
-  return ComputersChipsets;
+  return computers_chipsets;
 };

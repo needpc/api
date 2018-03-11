@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var ComputersCpus = sequelize.define('ComputersCpus', {
+  var computers_cpus = sequelize.define('computers_cpus', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -11,20 +11,17 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(128),
       allowNull: false
     },
-    frequency: {
-      type: DataTypes.FLOAT,
-      allowNull: true
-    },
     description: {
       type: DataTypes.STRING(512),
       allowNull: true
     }
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
-        // ComputersCpus.belongsTo(models.ComputersBrands);
+        // computers_cpus.belongsTo(models.computers_brands);
       }
     }
   });
-  return ComputersCpus;
+  return computers_cpus;
 };

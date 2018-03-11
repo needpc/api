@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var UsersAuth = sequelize.define('UsersAuth', {
+  var users_auth = sequelize.define('users_auth', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -22,5 +22,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return UsersAuth;
+  return users_auth;
 };
