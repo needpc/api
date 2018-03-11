@@ -23,7 +23,7 @@ module.exports = {
             conditions["name"] = { $like: req.query.name + '%' };
         
             // Request Sequelize
-            Models["ComputersCpus"].findAll({ 
+            Models["computers_cpus"].findAll({ 
                 attributes: ['id', 'name'],
                 where: {
                     $and: conditions,

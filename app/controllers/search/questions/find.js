@@ -34,19 +34,19 @@ module.exports = {
 
         // Include relations
         includes = [
-            { model: Models["ComputersQuestsResps"], as: 'quests', attributes: { exclude: ['id', 'createdAt', 'updatedAt', 'quest_id'] } }
+            { model: Models["computers_quests_resps"], as: 'quests', attributes: { exclude: ['id', 'createdat', 'updatedat', 'quest_id'] } }
         ]
 
         // query activity
         if (req.query.activity != null && validator.isLength(req.query.activity, { min: 0, max: 40 }))
-            includes.push({ model: Models["ComputersActivities"], as: 'activity', attributes: { exclude: 'id' },  where: { name: req.query.activity } })
+            includes.push({ model: Models["computers_activities"], as: 'activity', attributes: { exclude: 'id' },  where: { name: req.query.activity } })
         else
-            includes.push({ model: Models["ComputersActivities"], as: 'activity', attributes: { exclude: 'id' } })
+            includes.push({ model: Models["computers_activities"], as: 'activity', attributes: { exclude: 'id' } })
 
         // search in database
-        Models["ComputersQuests"].findAll({
+        Models["computers_quests"].findAll({
             include: includes,
-            attributes: { exclude: ['createdAt', 'updatedAt'] }
+            attributes: { exclude: ['createdat', 'updatedat'] }
         }).then(function (question) {
             question.forEach(function(element) {
                 setTable(element);

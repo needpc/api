@@ -19,7 +19,7 @@ module.exports = {
         {
             conditions["model"] = { $like: req.query.name + '%' };
 
-            Models["ComputersGraphics"].findAll({ 
+            Models["computers_gpus"].findAll({ 
                 attributes: ['id', 'model'],
                 where: {
                     $and: conditions,

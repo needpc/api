@@ -16,9 +16,9 @@ module.exports = {
         if (validator.isInt(req.params.id)) {
 
             // Request BDD
-            Models["ComputersPrices"].findAll({ 
+            Models["computers_prices"].findAll({ 
                 include: [ 
-                    { model: Models["ComputersTraders"], as: 'trader', attributes: { exclude: ['id', 'description', 'createdAt', 'updatedAt'] } },
+                    { model: Models["computers_traders"], as: 'trader', attributes: { exclude: ['id', 'description', 'createdat', 'updatedat'] } },
                 ],
                 attributes: ['updateAt', 'price'],
                 where: { 
