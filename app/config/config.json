@@ -2,7 +2,7 @@
   "development": {
     "username": "node",
     "password": "nodejs",
-    "database": "dev-node",
+    "database": "devnode",
     "host": "localhost",
     "dialect": "postgres",
     "logging": false,
