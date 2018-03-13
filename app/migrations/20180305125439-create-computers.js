@@ -8,19 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      osId: {
+      osid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_os', key: 'id' },
         allowNull: true,
         defaultValue: 1
       },
-      keyboardId: {
+      keyboardid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_keyboards', key: 'id' },
         allowNull: true,
         defaultValue: 1
       },
-      cpuId: {
+      cpuid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_cpus', key: 'id' },
         allowNull: true,
@@ -32,19 +32,19 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      graphicId: {
+      gpuid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_gpus', key: 'id' },
         allowNull: true,
         defaultValue: 1
       },
-      activityId: {
+      activityid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_activities', key: 'id' },
         allowNull: true,
         defaultValue: 1
       },
-      chipsetId: {
+      chipsetid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_chipsets', key: 'id' },
         allowNull: true,
@@ -117,11 +117,11 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      createdAt: {
+      createdat: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updatedat: {
         allowNull: false,
         type: Sequelize.DATE
       }

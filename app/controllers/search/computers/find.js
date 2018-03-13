@@ -45,6 +45,9 @@ module.exports = {
         includes.push(
             { model: Models["computers_os"], attributes: { exclude: ['id', 'description'] } },
             { model: Models["computers_cpus"], attributes: { exclude: ['id', 'description'] } },
+            { model: Models["computers_gpus"], attributes: { exclude: ['id', 'description'] } },
+            { model: Models["computers_chipsets"], attributes: { exclude: ['id', 'description'] } },
+            { model: Models["computers_activities"], attributes: { exclude: ['id', 'description'] } },
         )
         
         // request
@@ -56,12 +59,17 @@ module.exports = {
             },
             attributes: [
                 'id', 
-                'model', 
-                'designation', 
+                'model',  
                 'picture', 
                 'connector_available', 
+                'weight',
+                'length',
                 'width', 
                 'height', 
+                'memory_size',
+                'memory_type',
+                'memory_max_size',
+                'network',
                 'webcam', 
                 'updatedat', 
                 'createdat'

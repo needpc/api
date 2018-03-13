@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     }
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         // computers_chipsets.belongsTo(models.computers_brands);
