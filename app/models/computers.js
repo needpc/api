@@ -7,42 +7,42 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    osId: {
+    osid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    keyboardId: {
+    keyboardid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    cpuId: {
+    cpuid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    screenId: {
+    screenid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    graphicId: {
+    graphicid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    activityId: {
+    activityid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    chipsetId: {
+    chipsetid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
     },
-    priceId: {
+    priceid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
