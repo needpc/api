@@ -2,14 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('ComputersKeyboards', [
-      { name: 'AZERTY', description: 'FR' },
-      { name: 'QWERTY', description: 'US' },
-      { name: 'QWERTZ', description: 'GB' }
+    return queryInterface.bulkInsert('computers_keyboards', [
+      { name: 'N/A' },
     ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('ComputersKeyboards', null, {});
+    return queryInterface.bulkDelete('computers_keyboards', null, {});
   }
 };

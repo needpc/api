@@ -2,15 +2,12 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('ComputersActivities', [
+      return queryInterface.bulkInsert('computers_activities', [
         { name: 'N/A', description: null },
-        { name: 'Jeux', description: null },
-        { name: 'Bureautique', description: null },
-        { name: 'Pro', description: null }
       ], {});
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('ComputersActivities', null, {});
+      return queryInterface.bulkDelete('computers_activities', null, {});
   }
 };

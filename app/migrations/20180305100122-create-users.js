@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Users', {
+    return queryInterface.createTable('users', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,11 +11,11 @@ module.exports = {
       },
       roleId: {
         type: Sequelize.INTEGER,
-        references: { model: 'UsersRoles', key: 'id' }
+        references: { model: 'users_roles', key: 'id' }
       },
       authId: {
         type: Sequelize.INTEGER,
-        references: { model: 'UsersAuth', key: 'id' }
+        references: { model: 'users_auth', key: 'id' }
       },
       firstname: {
         type: Sequelize.STRING(128),
@@ -41,11 +41,11 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      createdAt: {
+      createdat: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updatedat: {
         allowNull: false,
         type: Sequelize.DATE
       }
@@ -53,12 +53,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
+    return queryInterface.dropTable('users');
   }
 };

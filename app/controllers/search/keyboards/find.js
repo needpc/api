@@ -23,7 +23,7 @@ module.exports = {
             conditions["type"] = { $like: req.query.name + '%' };
             conditions["language"] = { $like: req.query.name + '%' };
 
-            Models["ComputerKeyboards"].findAll({ 
+            Models["computers_keyboards"].findAll({ 
                 attributes: ['id', 'type', 'language'], 
                 where: {
                     $or: conditions,

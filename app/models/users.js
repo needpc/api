@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define('Users', {
+  var users = sequelize.define('users', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -9,13 +9,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     roleId: {
       type: DataTypes.INTEGER,
-      references: { model: 'UsersRoles', key: 'id' },
+      references: { model: 'users_roles', key: 'id' },
       allowNull: false,
       defaultValue: 1
     },
     authId: {
       type: DataTypes.INTEGER,
-      references: { model: 'UsersAuth', key: 'id' },
+      references: { model: 'users_auth', key: 'id' },
       allowNull: false,
       defaultValue: 1
     },
@@ -48,10 +48,10 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: true,
     classMethods: {
       associate: function(models) {
-        Users.belongsTo(models.UsersRoles);
-        Users.belongsTo(models.UsersAuth);
+        users.belongsTo(models.users_roles);
+        users.belongsTo(models.users_auth);
       }
     }
   });
-  return Users;
+  return users;
 };

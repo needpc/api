@@ -1,21 +1,21 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var ComputersPrices = sequelize.define('ComputersPrices', {
+  var computers_prices = sequelize.define('computers_prices', {
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    computerId: {
+    computerid: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    traderId: {
+    traderid: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    price: {
+    pricing: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -23,20 +23,16 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(512),
       allowNull: false
     },
-    createdAt: {
+    createdat: {
       allowNull: false,
       type: DataTypes.DATE
     },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
     classMethods: {
       associate: function(models) {
-        ComputersPrices.belongsTo(models.ComputersTraders);
+        computers_prices.belongsTo(models.computers_traders);
       }
     }
   });
-  return ComputersPrices;
+  return computers_prices;
 };

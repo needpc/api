@@ -1,5 +1,6 @@
-var path  = require('path');
-var error = require(path.join(__dirname, '/controllers/error'));
+var path   = require('path');
+var Models = require('./models/index');
+var error  = require(path.join(__dirname, '/controllers/error'));
 
 module.exports = {
 
@@ -14,7 +15,7 @@ module.exports = {
     isAdminIn: function (req, res, next)
     {
         if (req.isAuthenticated()) {
-            MUsers.TUsers.find({where: { authenticate_type: 1, id: req.session.passport }}).then(function (user) {
+            Models['users'].find({where: { authenticate_type: 1, id: req.session.passport }}).then(function (user) {
                 if (user)
                     return next();
             }).catch(function (e) {

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ComputersKeyboards', {
+    return queryInterface.createTable('computers_keyboards', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,6 +19,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ComputersKeyboards');
+    return queryInterface.dropTable('computers_keyboards');
   }
 };

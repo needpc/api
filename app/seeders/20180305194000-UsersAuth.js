@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('UsersAuth', [{
+      return queryInterface.bulkInsert('users_auth', [{
         name: 'local',
         description: 'Local auth'
       },
@@ -17,6 +17,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('UsersAuth', null, {});
+      return queryInterface.bulkDelete('users_auth', null, {});
   }
 };

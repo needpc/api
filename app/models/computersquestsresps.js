@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var ComputersTraders = sequelize.define('ComputersQuestsResps', {
+  var computers_traders = sequelize.define('computers_quests_resps', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -20,11 +20,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         // associations can be defined here
       }
     }
   });
-  return ComputersTraders;
+  return computers_traders;
 };

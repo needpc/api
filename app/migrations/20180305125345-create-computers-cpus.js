@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ComputersCpus', {
+    return queryInterface.createTable('computers_cpus', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,10 +12,6 @@ module.exports = {
         type: Sequelize.STRING(128),
         allowNull: false
       },
-      frequency: {
-        type: Sequelize.STRING(16),
-        allowNull: true
-      },
       description: {
         type: Sequelize.STRING(512),
         allowNull: true
@@ -23,6 +19,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ComputersCpus');
+    return queryInterface.dropTable('computers_cpus');
   }
 };

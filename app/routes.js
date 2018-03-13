@@ -4,15 +4,12 @@ var path       = require('path');
 var Middleware  = require(path.join(__dirname, '/middleware'));
 
 var CError = require(path.join(__dirname, '/controllers/error'));
-var CInjection  = require(path.join(__dirname, '/controllers/injections/injection'));
 var CSearchComputer = require(path.join(__dirname, '/controllers/search/computers/find'));
 var CSearchComputerPrices = require(path.join(__dirname, '/controllers/show/prices/find'));
 var CSearchOs = require(path.join(__dirname, '/controllers/search/os/find'));
 var CSearchGraphics = require(path.join(__dirname, '/controllers/search/graphics/find'));
-var CSearchColors = require(path.join(__dirname, '/controllers/search/colors/find'));
 var CSearchCpus = require(path.join(__dirname, '/controllers/search/cpus/find'));
 var CSearchChipsets = require(path.join(__dirname, '/controllers/search/chipsets/find'));
-var CSearchBrands = require(path.join(__dirname, '/controllers/search/brands/find'));
 var CSearchKeyboards = require(path.join(__dirname, '/controllers/search/keyboards/find'));
 var CSearchActivities = require(path.join(__dirname, '/controllers/search/activities/find'));
 var CSearchquestions = require(path.join(__dirname, '/controllers/search/questions/find'));
@@ -26,18 +23,6 @@ module.exports = function(app, passport) {
     });
 
     //////////////////////////////////////////////
-    // Data Injection
-    //////////////////////////////////////////////
-    app.route('/api/v1/internal/injection/')
-        .post(CInjection.Post);
-
-    app.route('/api/v1/internal/injection/:id')
-        .get(CInjection.GetId)
-        .put(CInjection.PutId)
-        .delete(CInjection.DeleteId);
-    //////////////////////////////////////////////
-
-    //////////////////////////////////////////////
     // Search all components
     //////////////////////////////////////////////
     app.route('/api/v1/search/computers/')
@@ -46,14 +31,8 @@ module.exports = function(app, passport) {
     app.route('/api/v1/search/os/')
         .get(CSearchOs.Get);
     
-    app.route('/api/v1/search/brands/')
-        .get(CSearchBrands.Get);
-    
     app.route('/api/v1/search/graphics/')
         .get(CSearchGraphics.Get);
-
-    app.route('/api/v1/search/colors/')
-        .get(CSearchColors.Get);
     
     app.route('/api/v1/search/cpus/')
         .get(CSearchCpus.Get);
