@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      questId: {
+      questid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_quests', key: 'id' },
         allowNull: false

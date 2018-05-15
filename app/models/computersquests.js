@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    activityId: {
+    activityid: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    rank: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -16,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     domain: {
-      type: DataTypes.STRING(64),
-      allowNull: false
+      type: DataTypes.STRING(16),
+      allowNull: true
     },
     createdat: {
       allowNull: false,
@@ -30,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        computers_quests.belongsTo(models.computers_activities);
+        // computers_quests.belongsTo(models.computers_activities);
+        computers_quests.hasMany(models.computers_quests_resps, { onDelete: 'CASCADE', foreignKey: 'questid' });
       }
     }
   });

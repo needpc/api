@@ -8,9 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      activityId: {
+      activityid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_activities', key: 'id' },
+        allowNull: false
+      },
+      rank: {
+        type: Sequelize.INTEGER,
         allowNull: false
       },
       quest: {
@@ -18,8 +22,8 @@ module.exports = {
         allowNull: false
       },
       domain: {
-		    type: Sequelize.STRING(64),
-        allowNull: false
+        type: Sequelize.STRING(16),
+        allowNull: true
       },
       createdat: {
         allowNull: false,

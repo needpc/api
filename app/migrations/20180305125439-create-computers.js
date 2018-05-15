@@ -14,21 +14,9 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      keyboardid: {
-        type: Sequelize.INTEGER,
-        references: { model: 'computers_keyboards', key: 'id' },
-        allowNull: true,
-        defaultValue: 1
-      },
       cpuid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_cpus', key: 'id' },
-        allowNull: true,
-        defaultValue: 1
-      },
-      screenId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'computers_screens', key: 'id' },
         allowNull: true,
         defaultValue: 1
       },
@@ -83,11 +71,11 @@ module.exports = {
         type: Sequelize.STRING(16),
         allowNull: true,
       },
-      memory_size: {
+      memory_type: {
         type: Sequelize.STRING(128),
         allowNull: true,
       },
-      memory_type: {
+      memory_size: {
         type: Sequelize.STRING(128),
         allowNull: true,
       },

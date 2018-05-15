@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.STRING(128),
         allowNull: false
       },
+      score: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+      },
       description: {
         type: Sequelize.STRING(512),
         allowNull: true
