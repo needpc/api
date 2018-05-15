@@ -26,7 +26,7 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      screenId: {
+      screenid: {
         type: Sequelize.INTEGER,
         references: { model: 'computers_screens', key: 'id' },
         allowNull: true,
@@ -83,11 +83,11 @@ module.exports = {
         type: Sequelize.STRING(16),
         allowNull: true,
       },
-      memory_size: {
+      memory_type: {
         type: Sequelize.STRING(128),
         allowNull: true,
       },
-      memory_type: {
+      memory_size: {
         type: Sequelize.STRING(128),
         allowNull: true,
       },

@@ -7,8 +7,12 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    activityId: {
+    activityid: {
       type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    rank: {
+      type: Sequelize.INTEGER,
       allowNull: false
     },
     quest: {

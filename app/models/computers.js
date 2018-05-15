@@ -42,11 +42,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: 1
     },
-    priceid: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 1
-    },
     model: {
       type: DataTypes.STRING(256),
       allowNull: false,
