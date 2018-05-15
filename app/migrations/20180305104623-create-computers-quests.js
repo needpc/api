@@ -22,8 +22,8 @@ module.exports = {
         allowNull: false
       },
       domain: {
-		    type: Sequelize.STRING(64),
-        allowNull: false
+        type: Sequelize.STRING(16),
+        allowNull: true
       },
       createdat: {
         allowNull: false,

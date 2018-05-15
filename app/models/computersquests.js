@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     rank: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     quest: {
@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     domain: {
-      type: DataTypes.STRING(64),
-      allowNull: false
+      type: DataTypes.STRING(16),
+      allowNull: true
     },
     createdat: {
       allowNull: false,
@@ -34,7 +34,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        computers_quests.belongsTo(models.computers_activities);
+        // computers_quests.belongsTo(models.computers_activities);
+        computers_quests.hasMany(models.computers_quests_resps, { onDelete: 'CASCADE', foreignKey: 'questid' });
       }
     }
   });

@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       score: {
-        type: Sequelize.STRING(128),
+        type: Sequelize.INTEGER,
         allowNull: true
       },
       description: {

@@ -12,17 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: 1
     },
-    keyboardid: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 1
-    },
     cpuid: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      defaultValue: 1
-    },
-    screenid: {
       type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 1
@@ -114,9 +104,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         computers.belongsTo(models.computers_os, { onDelete: "CASCADE", foreignKey: 'osid' });
-        computers.belongsTo(models.computers_keyboards, { onDelete: "CASCADE", foreignKey: 'keyboardid' });
         computers.belongsTo(models.computers_cpus, { onDelete: "CASCADE", foreignKey: 'cpuid' });
-        computers.belongsTo(models.computers_screens, { onDelete: "CASCADE", foreignKey: 'screenid' });
         computers.belongsTo(models.computers_gpus, { onDelete: "CASCADE", foreignKey: 'gpuid' });
         computers.belongsTo(models.computers_activities, { onDelete: "CASCADE", foreignKey: 'activityid' });
         computers.belongsTo(models.computers_chipsets, { onDelete: "CASCADE", foreignKey: 'chipsetid' });
