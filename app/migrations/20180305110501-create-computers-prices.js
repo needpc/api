@@ -8,28 +8,32 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      computerId: {
+      computerid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers', key: 'id' },
+        references: { 
+          model: 'computers', 
+          key: 'id'
+        },
         allowNull: false
       },
-      traderId: {
+      traderid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_traders', key: 'id' },
+        references: { 
+          model: 'computers_traders', 
+          key: 'id' 
+        },
         allowNull: false
       },
       pricing: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       url: {
         type: Sequelize.STRING(512),
-        allowNull: false
+        allowNull: true
       },
-      createdat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

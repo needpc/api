@@ -9,13 +9,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      roleId: {
+      authid: {
         type: Sequelize.INTEGER,
-        references: { model: 'users_roles', key: 'id' }
+        references: { 
+          model: 'users_auth', 
+          key: 'id' 
+        }
       },
-      authId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'users_auth', key: 'id' }
+      role: {
+        type: Sequelize.ENUM,
+        values: ['admin', 'modo', 'user'],
+        allowNull: false
       },
       firstname: {
         type: Sequelize.STRING(128),
@@ -41,14 +45,8 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      createdat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     })
   },
 

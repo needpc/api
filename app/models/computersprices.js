@@ -23,11 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(512),
       allowNull: false
     },
-    createdat: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
   }, {
+    timestamps: true,
     classMethods: {
       associate: function(models) {
         computers_prices.belongsTo(models.computers_traders);
