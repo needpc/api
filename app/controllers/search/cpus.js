@@ -1,31 +1,35 @@
-var error     = require('../../../controllers/error');
+var error     = require('../../controllers/error');
 var validator = require('validator');
-var path = require('path');
-var Models   = require(path.join(__dirname, '../../../models/index'));
+var path      = require('path');
+var Models    = require(path.join(__dirname, '../../models/index'));
 
 module.exports = {
 
-    // Search all Graphic Card
+    // Search All CPU avalaible
     Get: function(req, res)
     {
+        // Store all conditions
         conditions = {};
         
+        // Max result
         if (req.query.limit && (validator.isNumeric(req.query.limit) && req.query.limit > 0))
             max_limit = req.query.limit;
         else
             max_limit = 25;
 
+        // Check if null
         if (req.query.name != null)
         {
-            conditions["model"] = { $like: req.query.name + '%' };
-
-            Models["computers_gpus"].findAll({ 
-                attributes: ['id', 'model'],
+            conditions["name"] = { $like: req.query.name + '%' };
+        
+            // Request Sequelize
+            Models["computers_cpus"].findAll({ 
+                attributes: ['id', 'name'],
                 where: {
                     $and: conditions,
                 },
                 limit: max_limit
-            }).then(function(object){
+            }).then(function(object) {
                 if (!object)
                     error.http_error(req, res, { code: 404 });
                 else

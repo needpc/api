@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    computerid: {
+    computer_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    traderid: {
+    trader_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -23,8 +23,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(512),
       allowNull: false
     },
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE,
   }, {
-    timestamps: true,
     classMethods: {
       associate: function(models) {
         computers_prices.belongsTo(models.computers_traders);

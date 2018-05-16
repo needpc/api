@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      osid: {
+      os_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_os', 
@@ -17,7 +17,7 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      cpuid: {
+      cpu_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_cpus',
@@ -26,7 +26,7 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      gpuid: {
+      gpu_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_gpus', 
@@ -35,7 +35,7 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      activityid: {
+      activity_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_activities', 
@@ -44,7 +44,7 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
-      chipsetid: {
+      chipset_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_chipsets', 
@@ -126,21 +126,25 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: true,
       },
+      screen_format: {
+        type: Sequelize.STRING(16),
+        allowNull: true,
+      },
       network: {
         type: Sequelize.STRING(128),
         allowNull: true,
       },
       webcam: {
         type: Sequelize.BOOLEAN,
-        allowNull: false,
+        allowNull: true,
       },
       active: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: true
       },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

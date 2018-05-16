@@ -1,16 +1,16 @@
-var error     = require('../../../controllers/error');
+var error     = require('../../controllers/error');
 var validator = require('validator');
-var path = require('path');
-var Models   = require(path.join(__dirname, '../../../models/index'));
+var path      = require('path');
+var Models    = require(path.join(__dirname, '../../models/index'));
 
 module.exports = {
 
-    // Get all chipset
+    // Search All OS avalaible
+    // @limit BDD
     Get: function(req, res)
     {
         conditions = {};
-        
-        // Set limit result
+
         if (req.query.limit && (validator.isNumeric(req.query.limit) && req.query.limit > 0))
             max_limit = req.query.limit;
         else
@@ -20,15 +20,13 @@ module.exports = {
         {
             conditions["name"] = { $like: req.query.name + '%' };
 
-            // Search in database
-            Models["computers_chipsets"].findAll(
-            { 
-                attributes: ['id', 'name'], 
+            Models["computers_os"].findAll({ 
+                attributes: ['id', 'name', 'description'],
                 where: {
                     $and: conditions,
                 },
                 limit: max_limit
-            }).then(function(object){
+            }).then(function(object) {
                 if (!object)
                     error.http_error(req, res, { code: 404 });
                 else

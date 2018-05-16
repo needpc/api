@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      computerid: {
+      computer_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers', 
@@ -32,8 +32,8 @@ module.exports = {
         type: Sequelize.STRING(512),
         allowNull: true
       },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

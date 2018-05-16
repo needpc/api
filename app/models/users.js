@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    authid: {
+    auth_id: {
       type: DataTypes.INTEGER,
       references: { 
         model: 'users_auth', 
@@ -45,9 +45,9 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     },
-
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE,
   }, {
-    timestamps: true,
     classMethods: {
       associate: function(models) {
         users.belongsTo(models.users_auth);

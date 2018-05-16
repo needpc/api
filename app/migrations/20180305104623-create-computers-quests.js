@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      activityid: {
+      activity_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_activities', 
@@ -28,8 +28,8 @@ module.exports = {
         type: Sequelize.STRING(16),
         allowNull: true
       },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {
