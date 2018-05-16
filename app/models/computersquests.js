@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         // computers_quests.belongsTo(models.computers_activities);

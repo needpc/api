@@ -48,6 +48,7 @@ module.exports = function(sequelize, DataTypes) {
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         users.belongsTo(models.users_auth);
