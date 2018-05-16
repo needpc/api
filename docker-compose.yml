@@ -2,9 +2,9 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
+    image: postgres:9.6.9-alpine
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql
     deploy:
       replicas: 1
       restart_policy:
@@ -20,12 +20,11 @@ services:
           cpus: '25.000'
           memory: 512M
     environment:
-      MYSQL_ROOT_PASSWORD: somenodeapi
-      MYSQL_DATABASE: test-node
-      MYSQL_USER: node
-      MYSQL_PASSWORD: nodejs
+      POSTGRES_DB: dev-node
+      POSTGRES_USER: node
+      POSTGRES_PASSWORD: nodejs
     ports:
-      - "3306:3306"
+      - "5432:5432"
 
   api:
     depends_on:
