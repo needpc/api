@@ -7,17 +7,19 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    roleId: {
+    authid: {
       type: DataTypes.INTEGER,
-      references: { model: 'users_roles', key: 'id' },
+      references: { 
+        model: 'users_auth', 
+        key: 'id' 
+      },
       allowNull: false,
       defaultValue: 1
     },
-    authId: {
-      type: DataTypes.INTEGER,
-      references: { model: 'users_auth', key: 'id' },
-      allowNull: false,
-      defaultValue: 1
+    role: {
+      type: DataTypes.ENUM,
+      values: ['admin', 'modo', 'user'],
+      allowNull: false
     },
     firstname: {
       type: DataTypes.STRING(128),
@@ -48,7 +50,6 @@ module.exports = function(sequelize, DataTypes) {
     timestamps: true,
     classMethods: {
       associate: function(models) {
-        users.belongsTo(models.users_roles);
         users.belongsTo(models.users_auth);
       }
     }
