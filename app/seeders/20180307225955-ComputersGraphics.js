@@ -3,7 +3,14 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('computers_gpus', [
-      { name: 'N/A', description: null },
+      { 
+        name: 'N/A',
+        description: null
+      },
+      { 
+        name: 'Aucun',
+        description: null
+      }
     ], {});
   },
 
