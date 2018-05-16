@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('computers_quests_resps', [
       { 
-        questid: 1,
+        quest_id: 1,
         resp: "Jouer",
         indice: 2
       },
