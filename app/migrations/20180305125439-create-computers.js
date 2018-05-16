@@ -10,31 +10,46 @@ module.exports = {
       },
       osid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_os', key: 'id' },
+        references: { 
+          model: 'computers_os', 
+          key: 'id' 
+        },
         allowNull: true,
         defaultValue: 1
       },
       cpuid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_cpus', key: 'id' },
+        references: { 
+          model: 'computers_cpus',
+          key: 'id' 
+        },
         allowNull: true,
         defaultValue: 1
       },
       gpuid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_gpus', key: 'id' },
+        references: { 
+          model: 'computers_gpus', 
+          key: 'id' 
+        },
         allowNull: true,
         defaultValue: 1
       },
       activityid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_activities', key: 'id' },
+        references: { 
+          model: 'computers_activities', 
+          key: 'id' 
+        },
         allowNull: true,
         defaultValue: 1
       },
       chipsetid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_chipsets', key: 'id' },
+        references: { 
+          model: 'computers_chipsets', 
+          key: 'id' 
+        },
         allowNull: true,
         defaultValue: 1
       },
@@ -91,6 +106,34 @@ module.exports = {
         type: Sequelize.STRING(128),
         allowNull: true,
       },
+      keyboard_type: {
+        type: Sequelize.STRING(128),
+        allowNull: true,
+      },
+      keyboard_numpad: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+      },
+      keyboard_light: {
+        type: Sequelize.BOOLEAN,
+        allowNull: true,
+      },
+      screen_type: {
+        type: Sequelize.STRING(256),
+        allowNull: true,
+      },
+      screen_resolution: {
+        type: Sequelize.STRING(256),
+        allowNull: true,
+      },
+      screen_refresh_rate: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      screen_size: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+      },
       network: {
         type: Sequelize.STRING(128),
         allowNull: true,
@@ -98,7 +141,6 @@ module.exports = {
       webcam: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: true
       },
       active: {
         type: Sequelize.BOOLEAN,

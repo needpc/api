@@ -8,14 +8,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      computerId: {
+      computerid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers', key: 'id' },
+        references: { 
+          model: 'computers', 
+          key: 'id'
+        },
         allowNull: false
       },
-      traderId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'computers_traders', key: 'id' },
+      traderid: {
+        type: Sequelize.UUID,
+        references: { 
+          model: 'computers_traders', 
+          key: 'id' 
+        },
         allowNull: false
       },
       pricing: {
