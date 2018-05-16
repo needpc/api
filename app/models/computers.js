@@ -126,6 +126,7 @@ module.exports = (sequelize, DataTypes) => {
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
   }, {
+    timestamps: false,
     classMethods: {
       associate: function(models) {
         computers.belongsTo(models.computers_os, { onDelete: "CASCADE", foreignKey: 'os_id' });
