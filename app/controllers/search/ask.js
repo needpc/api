@@ -1,7 +1,7 @@
-var error     = require('../../../controllers/error');
+var error     = require('../../controllers/error');
 var validator = require('validator');
-var path = require('path');
-var Models   = require(path.join(__dirname, '../../../models/index'));
+var path      = require('path');
+var Models    = require(path.join(__dirname, '../../models/index'));
 
 module.exports = {
 
@@ -10,7 +10,7 @@ module.exports = {
 
         // Include relations
         includes = [
-            { model: Models["computers_quests_resps"], attributes: { exclude: ['id', 'questid', 'createdAt', 'updatedAt'] } }
+            { model: Models["computers_quests_resps"], attributes: { exclude: ['id', 'questid', 'created_at', 'updated_at'] } }
         ]
 
         // query activity
@@ -24,8 +24,8 @@ module.exports = {
             include: includes,
             attributes: { 
                 exclude: [
-                    'createdAt', 
-                    'updatedAt'
+                    'created_at', 
+                    'updated_at'
                 ] 
             }
         }).then(function (question) {

@@ -1,19 +1,14 @@
 var sequelize  = require('sequelize');
 var path       = require('path');
+var Middleware = require(path.join(__dirname, '/middleware'));
 
-var Middleware  = require(path.join(__dirname, '/middleware'));
-
-var CError = require(path.join(__dirname, '/controllers/error'));
-var CSearchComputer = require(path.join(__dirname, '/controllers/search/computers/find'));
-var CSearchComputerPrices = require(path.join(__dirname, '/controllers/show/prices/find'));
-var CSearchOs = require(path.join(__dirname, '/controllers/search/os/find'));
-var CSearchGraphics = require(path.join(__dirname, '/controllers/search/graphics/find'));
-var CSearchCpus = require(path.join(__dirname, '/controllers/search/cpus/find'));
-var CSearchChipsets = require(path.join(__dirname, '/controllers/search/chipsets/find'));
-var CSearchActivities = require(path.join(__dirname, '/controllers/search/activities/find'));
-var CSearchquestions = require(path.join(__dirname, '/controllers/search/questions/find'));
-
-var CShowComputers = require(path.join(__dirname, '/controllers/show/computers/find'));
+var CError            = require(path.join(__dirname, '/controllers/error'));
+var CSearchComputer   = require(path.join(__dirname, '/controllers/search/computers'));
+var CSearchOs         = require(path.join(__dirname, '/controllers/search/os'));
+var CSearchGraphics   = require(path.join(__dirname, '/controllers/search/graphics'));
+var CSearchCpus       = require(path.join(__dirname, '/controllers/search/cpus'));
+var CSearchActivities = require(path.join(__dirname, '/controllers/search/activities'));
+var CSearchquestions  = require(path.join(__dirname, '/controllers/search/ask'));
 
 module.exports = function(app, passport) {
 
@@ -27,6 +22,9 @@ module.exports = function(app, passport) {
     app.route('/api/v1/search/computers/')
         .get(CSearchComputer.Get);
     
+    app.route('/api/v1/search/computers/:id')
+        .get(CSearchComputer.GetId);
+    
     app.route('/api/v1/search/os/')
         .get(CSearchOs.Get);
     
@@ -36,17 +34,8 @@ module.exports = function(app, passport) {
     app.route('/api/v1/search/cpus/')
         .get(CSearchCpus.Get);
     
-    app.route('/api/v1/search/chipsets/')
-        .get(CSearchChipsets.Get);
-    
     app.route('/api/v1/search/activities/')
         .get(CSearchActivities.Get);
-
-    app.route('/api/v1/computers/:id')
-        .get(CShowComputers.GetId);
-    
-    app.route('/api/v1/computers/prices/:id')
-        .get(CSearchComputerPrices.GetId);
 
     app.route('/api/v1/ask')
         .get(CSearchquestions.GetQuestion);

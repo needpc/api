@@ -1,8 +1,8 @@
-var error     = require('../../../controllers/error');
+var error     = require('../../controllers/error');
 var validator = require('validator');
-var path = require('path');
-var Models   = require(path.join(__dirname, '../../../models/index'));
-var moment = require('moment');
+var path      = require('path');
+var Models    = require(path.join(__dirname, '../../models/index'));
+var moment    = require('moment');
 
 module.exports = {
 
@@ -18,7 +18,7 @@ module.exports = {
             // Request BDD
             Models["computers_prices"].findAll({ 
                 include: [ 
-                    { model: Models["computers_traders"], as: 'trader', attributes: { exclude: ['id', 'description', 'createdat', 'updatedat'] } },
+                    { model: Models["computers_traders"], attributes: { exclude: ['id', 'description', 'created_at', 'updated_at'] } },
                 ],
                 attributes: ['updateAt', 'price'],
                 where: { 

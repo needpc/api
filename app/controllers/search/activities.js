@@ -1,7 +1,7 @@
-var error     = require('../../../controllers/error');
+var error     = require('../../controllers/error');
 var validator = require('validator');
-var path = require('path');
-var Models   = require(path.join(__dirname, '../../../models/index'));
+var path      = require('path');
+var Models    = require(path.join(__dirname, '../../models/index'));
 
 module.exports = {
 
