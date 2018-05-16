@@ -10,7 +10,10 @@ module.exports = {
       },
       questid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_quests', key: 'id' },
+        references: { 
+          model: 'computers_quests', 
+          key: 'id' 
+        },
         allowNull: false
       },
       resp: {

@@ -10,7 +10,10 @@ module.exports = {
       },
       activityid: {
         type: Sequelize.INTEGER,
-        references: { model: 'computers_activities', key: 'id' },
+        references: { 
+          model: 'computers_activities', 
+          key: 'id' 
+        },
         allowNull: false
       },
       rank: {
