@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    activityid: {
+    activity_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -23,12 +23,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(16),
       allowNull: true
     },
+    created_at: DataTypes.DATE,
+    updated_at: DataTypes.DATE,
   }, {
-    timestamps: true,
     classMethods: {
       associate: function(models) {
         // computers_quests.belongsTo(models.computers_activities);
-        computers_quests.hasMany(models.computers_quests_resps, { onDelete: 'CASCADE', foreignKey: 'questid' });
+        computers_quests.hasMany(models.computers_quests_resps, { onDelete: 'CASCADE', foreignKey: 'quest_id' });
       }
     }
   });

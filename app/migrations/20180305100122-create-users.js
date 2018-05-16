@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      authid: {
+      auth_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'users_auth', 
@@ -45,8 +45,8 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      createdAt: Sequelize.DATE,
-      updatedAt: Sequelize.DATE,
+      created_at: Sequelize.DATE,
+      updated_at: Sequelize.DATE,
     })
   },
 

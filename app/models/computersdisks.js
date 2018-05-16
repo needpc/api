@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    computerid: {
+    computer_id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        computers_disks.belongsTo(models.computers, { onDelete: "CASCADE", foreignKey: 'computerid' });
+        computers_disks.belongsTo(models.computers, { onDelete: "CASCADE", foreignKey: 'computer_id' });
       }
     }
   });
