@@ -98,14 +98,6 @@ module.exports = {
         type: Sequelize.STRING(128),
         allowNull: true,
       },
-      storage_size: {
-        type: Sequelize.STRING(128),
-        allowNull: true,
-      },
-      storage_type: {
-        type: Sequelize.STRING(128),
-        allowNull: true,
-      },
       keyboard_type: {
         type: Sequelize.STRING(128),
         allowNull: true,
@@ -147,14 +139,8 @@ module.exports = {
         allowNull: false,
         defaultValue: true
       },
-      createdat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

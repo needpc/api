@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    quest_id: {
+    questid: {
       type: DataTypes.INTEGER,
       allowNull: false
     },

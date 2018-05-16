@@ -23,15 +23,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(16),
       allowNull: true
     },
-    createdat: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedat: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
+    timestamps: true,
     classMethods: {
       associate: function(models) {
         // computers_quests.belongsTo(models.computers_activities);

@@ -17,7 +17,7 @@ module.exports = {
         allowNull: false
       },
       traderid: {
-        type: Sequelize.UUID,
+        type: Sequelize.INTEGER,
         references: { 
           model: 'computers_traders', 
           key: 'id' 
@@ -26,16 +26,14 @@ module.exports = {
       },
       pricing: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: true
       },
       url: {
         type: Sequelize.STRING(512),
-        allowNull: false
+        allowNull: true
       },
-      createdat: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
+      createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
     });
   },
   down: (queryInterface, Sequelize) => {

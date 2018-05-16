@@ -73,6 +73,34 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(128),
       allowNull: true,
     },
+    keyboard_type: {
+      type: DataTypes.STRING(128),
+      allowNull: true,
+    },
+    keyboard_numpad: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
+    keyboard_light: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+    },
+    screen_type: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+    },
+    screen_resolution: {
+      type: DataTypes.STRING(256),
+      allowNull: true,
+    },
+    screen_refresh_rate: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    screen_size: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
     network: {
       type: DataTypes.STRING(128),
       allowNull: true,
@@ -80,7 +108,6 @@ module.exports = (sequelize, DataTypes) => {
     webcam: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: true
     },
     wifi: {
       type: DataTypes.BOOLEAN,
@@ -92,15 +119,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: true
     },
-    createdat: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedat: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
+    timestamps: true,
     classMethods: {
       associate: function(models) {
         computers.belongsTo(models.computers_os, { onDelete: "CASCADE", foreignKey: 'osid' });
@@ -109,6 +129,7 @@ module.exports = (sequelize, DataTypes) => {
         computers.belongsTo(models.computers_activities, { onDelete: "CASCADE", foreignKey: 'activityid' });
         computers.belongsTo(models.computers_chipsets, { onDelete: "CASCADE", foreignKey: 'chipsetid' });
         computers.hasMany(models.computers_prices, { onDelete: 'CASCADE', foreignKey: 'computerid' });
+        computers.hasMany(models.computers_disks, { onDelete: 'CASCADE', foreignKey: 'computerid' });
       }
     }
   });
