@@ -129,13 +129,15 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        computers.belongsTo(models.computers_os, { onDelete: "CASCADE", foreignKey: 'os_id' });
-        computers.belongsTo(models.computers_cpus, { onDelete: "CASCADE", foreignKey: 'cpu_id' });
-        computers.belongsTo(models.computers_gpus, { onDelete: "CASCADE", foreignKey: 'gpu_id' });
-        computers.belongsTo(models.computers_activities, { onDelete: "CASCADE", foreignKey: 'activity_id' });
-        computers.belongsTo(models.computers_chipsets, { onDelete: "CASCADE", foreignKey: 'chipset_id' });
-        computers.hasMany(models.computers_prices, { onDelete: 'CASCADE', foreignKey: 'computer_id' });
-        computers.hasMany(models.computers_disks, { onDelete: 'CASCADE', foreignKey: 'computer_id' });
+        computers.belongsTo(models.computers_os, { as: 'os', onDelete: "CASCADE", foreignKey: 'os_id' });
+        computers.belongsTo(models.computers_cpus, { as: 'cpu', onDelete: "CASCADE", foreignKey: 'cpu_id' });
+        computers.belongsTo(models.computers_gpus, { as: 'gpu', onDelete: "CASCADE", foreignKey: 'gpu_id' });
+        computers.belongsTo(models.computers_activities, { as: 'activity', onDelete: "CASCADE", foreignKey: 'activity_id' });
+        computers.belongsTo(models.computers_chipsets, { as: 'chipset', onDelete: "CASCADE", foreignKey: 'chipset_id' });
+        computers.hasMany(models.computers_prices, { as: 'prices', onDelete: 'CASCADE', foreignKey: 'computer_id' });
+        models.computers_prices.belongsTo(computers, { as: 'prices', foreignKey: 'computer_id'});
+        computers.hasMany(models.computers_disks, { as: 'disks', onDelete: 'CASCADE', foreignKey: 'computer_id' });
+        models.computers_disks.belongsTo(computers, { as: 'disks', foreignKey: 'computer_id'});
       }
     }
   });
