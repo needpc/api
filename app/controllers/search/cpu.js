@@ -5,14 +5,18 @@ var Models    = require(path.join(__dirname, '../../models/index'));
 
 module.exports = {
 
-    // Search All OS avalaible
-    // @limit BDD
+    // Search All CPU avalaible
     Get: function(req, res)
     {
-        Models["computers_os"].findAll({ 
-            attributes: ['id', 'name', 'description'],
+        // Request Sequelize
+        Models["computers_cpus"].findAll({ 
+            attributes: [
+                'id', 
+                'name',
+                'score'
+            ],
         }).then(function(object) {
-            error.http_success(req, res, { code: 200, data: object });
+                error.http_success(req, res, { code: 200, data: object });
         }).error(function(err) {
             console.log('Error occured' + err);
             error.http_error(req, res, { code: 500 });
