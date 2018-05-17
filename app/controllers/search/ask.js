@@ -8,6 +8,8 @@ module.exports = {
     // Get all question (general || domain)
     GetAsk: function (req, res) {
 
+        conditions = {};
+
         // Include relations
         includes = [
             { 
@@ -44,6 +46,9 @@ module.exports = {
         // search in database
         Models["computers_quests"].findAll({
             include: includes,
+            where: {
+                $and: conditions,
+            },
             attributes: { 
                 exclude: [
                     'activity_id',
