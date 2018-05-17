@@ -5,9 +5,10 @@ var Middleware = require(path.join(__dirname, '/middleware'));
 var CError            = require(path.join(__dirname, '/controllers/error'));
 var CSearchComputer   = require(path.join(__dirname, '/controllers/search/computers'));
 var CSearchOs         = require(path.join(__dirname, '/controllers/search/os'));
-var CSearchGraphics   = require(path.join(__dirname, '/controllers/search/graphics'));
-var CSearchCpus       = require(path.join(__dirname, '/controllers/search/cpus'));
-var CSearchActivities = require(path.join(__dirname, '/controllers/search/activities'));
+var CSearchGpu        = require(path.join(__dirname, '/controllers/search/gpu'));
+var CSearchCpu        = require(path.join(__dirname, '/controllers/search/cpu'));
+var CSearchChipset    = require(path.join(__dirname, '/controllers/search/chipset'));
+var CSearchActivities = require(path.join(__dirname, '/controllers/search/activity'));
 var CSearchquestions  = require(path.join(__dirname, '/controllers/search/ask'));
 
 module.exports = function(app, passport) {
@@ -28,17 +29,20 @@ module.exports = function(app, passport) {
     app.route('/api/v1/search/os/')
         .get(CSearchOs.Get);
     
-    app.route('/api/v1/search/graphics/')
-        .get(CSearchGraphics.Get);
+    app.route('/api/v1/search/gpu/')
+        .get(CSearchGpu.Get);
     
-    app.route('/api/v1/search/cpus/')
-        .get(CSearchCpus.Get);
+    app.route('/api/v1/search/cpu/')
+        .get(CSearchCpu.Get);
+
+    app.route('/api/v1/search/chipset/')
+        .get(CSearchChipset.Get);
     
-    app.route('/api/v1/search/activities/')
+    app.route('/api/v1/search/activity/')
         .get(CSearchActivities.Get);
 
     app.route('/api/v1/ask')
-        .get(CSearchquestions.GetQuestion);
+        .get(CSearchquestions.GetAsk);
     //////////////////////////////////////////////
 
     // =====================================

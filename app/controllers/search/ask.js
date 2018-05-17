@@ -6,24 +6,52 @@ var Models    = require(path.join(__dirname, '../../models/index'));
 module.exports = {
 
     // Get all question (general || domain)
-    GetQuestion: function (req, res) {
+    GetAsk: function (req, res) {
+
+        conditions = {};
 
         // Include relations
         includes = [
-            { model: Models["computers_quests_resps"], attributes: { exclude: ['id', 'questid', 'created_at', 'updated_at'] } }
+            { 
+                model: Models["computers_activities"],
+                as: "activity",
+                attributes: { 
+                    exclude: [
+                        'id', 
+                    ] 
+                } 
+            },
+            { 
+                model: Models["computers_quests_resps"],
+                as: "responses",
+                attributes: { 
+                    exclude: [
+                        'id', 
+                        'quest_id', 
+                        'created_at', 
+                        'updated_at'
+                    ] 
+                } 
+            }
         ]
 
         // query activity
-        // if (req.query.activity != null && validator.isLength(req.query.activity, { min: 0, max: 40 }))
-        //     includes.push({ model: Models["computers_activities"], as: 'activity', attributes: { exclude: 'id' },  where: { name: req.query.activity } })
-        // else
-        //     includes.push({ model: Models["computers_activities"], as: 'activity', attributes: { exclude: 'id' } })
+        if (req.query.activity != null && req.query.activity != "")
+            conditions["activity_id"] = { $eq: req.query.activity };
+
+        // query activity
+        if (req.query.rank != null && req.query.rank != "")
+            conditions["rank"] = { $eq: req.query.rank };
 
         // search in database
         Models["computers_quests"].findAll({
             include: includes,
+            where: {
+                $and: conditions,
+            },
             attributes: { 
                 exclude: [
+                    'activity_id',
                     'created_at', 
                     'updated_at'
                 ] 
