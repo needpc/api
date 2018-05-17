@@ -38,7 +38,7 @@ module.exports = function(app, passport) {
         .get(CSearchActivities.Get);
 
     app.route('/api/v1/ask')
-        .get(CSearchquestions.GetQuestion);
+        .get(CSearchquestions.GetAsk);
     //////////////////////////////////////////////
 
     // =====================================

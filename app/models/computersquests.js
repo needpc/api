@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        // computers_quests.belongsTo(models.computers_activities);
-        computers_quests.hasMany(models.computers_quests_resps, { onDelete: 'CASCADE', foreignKey: 'quest_id' });
+        computers_quests.belongsTo(models.computers_activities, { as: "activity", onDelete: 'CASCADE', foreignKey: 'activity_id' });
+        computers_quests.hasMany(models.computers_quests_resps, { as: "responses", onDelete: 'CASCADE', foreignKey: 'quest_id' });
       }
     }
   });
