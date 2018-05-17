@@ -18,9 +18,23 @@ module.exports = {
             // Request BDD
             Models["computers_prices"].findAll({ 
                 include: [ 
-                    { model: Models["computers_traders"], attributes: { exclude: ['id', 'description', 'created_at', 'updated_at'] } },
+                    { 
+                        model: Models["computers_traders"], 
+                        attributes: { 
+                            exclude: [
+                                'id', 
+                                'description', 
+                                'created_at', 
+                                'updated_at'
+                            ] 
+                        } 
+                    },
                 ],
-                attributes: ['updateAt', 'price'],
+                attributes: [
+                    'update_at', 
+                    'price', 
+                    'url'
+                ],
                 where: { 
                     computer_id: req.params.id,
                     date: moment().format('L')

@@ -16,7 +16,7 @@ module.exports = {
         },
         allowNull: false
       },
-      traderid: {
+      trader_id: {
         type: Sequelize.INTEGER,
         references: { 
           model: 'computers_traders', 
@@ -25,12 +25,13 @@ module.exports = {
         allowNull: false
       },
       pricing: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.HSTORE,
         allowNull: true
       },
       url: {
         type: Sequelize.STRING(512),
-        allowNull: true
+        allowNull: true,
+        unique: 'uniqueTag',
       },
       created_at: Sequelize.DATE,
       updated_at: Sequelize.DATE,

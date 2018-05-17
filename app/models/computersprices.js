@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     pricing: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.HSTORE,
       allowNull: false
     },
     url: {
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        computers_prices.belongsTo(models.computers_traders);
+        computers_prices.belongsTo(models.computers_traders, { onDelete: 'CASCADE', foreignKey: 'trader_id' });
       }
     }
   });

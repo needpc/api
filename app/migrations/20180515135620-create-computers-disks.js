@@ -9,6 +9,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      computer_id: {
+        type: Sequelize.INTEGER,
+        references: { 
+          model: 'computers', 
+          key: 'id'
+        },
+        allowNull: false
+      },
       type: {
         type: Sequelize.ENUM,
         values: ['N/A', 'HDD', 'SSD'],
