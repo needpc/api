@@ -19,7 +19,7 @@ module.exports = {
             conditions["model"] = { $like: '%' + req.query.model + '%' };
         
         // OS
-        if (req.query.os != null) {
+        if (req.query.os != null && req.query.os != "") {
             conditions["os_id"] = []
             for (var i = 0; i < req.query.os.length; i++) {       
                 conditions["os_id"].push(req.query.os[i]);
@@ -27,18 +27,10 @@ module.exports = {
         }
 
         // GPU Scoring
-        if (req.query.gpu_score != null) {
+        if (req.query.gpu_score != null && req.query.gpu_score != "") {
             conditions["$gpu.score$"] = { 
                     $lte: (parseInt(req.query.gpu_score, 10)+1000), 
                     $gte: (parseInt(req.query.gpu_score, 10)-1000), 
-            };
-        }
-
-        // CPU Scoring
-        if (req.query.cpu_score != null) {
-            conditions["$cpu.score$"] = { 
-                    $lte: (parseInt(req.query.cpu_score, 10)+1000), 
-                    $gte: (parseInt(req.query.cpu_score, 10)-1000), 
             };
         }
             
@@ -49,8 +41,24 @@ module.exports = {
                 conditions["activity_id"].push(req.query.activity[i]);
             }
         }
+
+        // CPU
+        if (req.query.cpu != null && req.query.cpu != "") {
+            conditions["cpu_id"] = []
+            for (var i = 0; i < req.query.cpu.length; i++) {       
+                conditions["cpu_id"].push(req.query.cpu[i]);
+            }
+        }
+
+        // CPU Scoring
+        if (req.query.cpu_score != null && req.query.cpu_score != "") {
+            conditions["$cpu.score$"] = { 
+                $lte: (parseInt(req.query.cpu_score, 10)+1000), 
+                $gte: (parseInt(req.query.cpu_score, 10)-1000), 
+            };
+        }
                    
-        // Graphics
+        // GPU
         if (req.query.gpu != null && req.query.gpu != "") {
             conditions["gpu_id"] = []
             for (var i = 0; i < req.query.gpu.length; i++) {       
