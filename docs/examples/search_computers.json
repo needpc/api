@@ -2,179 +2,89 @@
     "error": false,
     "data": [
         {
-            "id": 2,
-            "model": "Aurore Ci5P-8-S5",
-            "designation": "LDLC Aurore Ci5P-8-S5",
-            "picture": "https://media.ldlc.com/ld/products/00/04/45/56/LD0004455603_2.jpg",
-            "connector_avalaible": "none",
-            "size_width": 200,
-            "size_height": 300,
-            "is_os_included": true,
-            "is_webcam_included": true,
-            "is_wifi_included": true,
-            "is_vr_ready": false,
-            "garanty_year": 2,
-            "updatedAt": "2017-11-27T22:45:14.975Z",
-            "createdAt": "2017-11-27T22:45:14.975Z",
-            "activity": {
-                "name": "bureautique",
-                "description": null
-            },
+            "id": 28,
+            "model": "LDLC Aurore Ci3-4-H20-H10",
+            "picture": "https://media.ldlc.com/ld/products/00/04/45/51/LD0004455157_2.jpg",
+            "updated_at": "2018-05-18T13:37:55.057Z",
+            "created_at": "2018-05-18T13:37:55.057Z",
             "os": {
-                "name": "Ubuntu/Linux",
+                "name": "Windows 10 Famille 64 bits",
                 "description": null
             },
-            "keyboards": {
-                "type": "AZERTY",
+            "cpu": {
+                "name": "Intel Core i3-6100H (Dual-Core 2.7 GHz - Cache 3 Mo)",
+                "score": null,
                 "description": null
             },
-            "graphics": {
-                "brand_id": 12,
-                "model": "GeForce GT540M cuda",
-                "vram": null,
-                "frequency": null,
+            "gpu": {
+                "name": "Intel HD Graphics 530",
+                "score": 500,
                 "description": null
             },
-            "networks": {
-                "name": "Gigabit Ethernet",
-                "description": "1000/100/10"
-            },
-            "display": {
-                "type": "LCD",
-                "resolution": "1920x1080",
-                "size": "15",
-                "refresh_rate": 120,
+            "chipset": {
+                "name": "Mobile Intel HM170 Express",
                 "description": null
             },
-            "disks": {
-                "brand_id": 14,
-                "model": "WD40EFRX Disque dur interne 3,5\"",
-                "space": "4To"
-            },
-            "colors": {
-                "name": "Rouge",
-                "picker": "#FF5733"
-            },
-            "brands": {
-                "name": "LDLC",
+            "activity": {
+                "name": "N/A",
                 "description": null
             }
         },
         {
-            "id": 1,
-            "model": "Aurore Ci3-4-H20",
-            "designation": "LDLC Aurore Ci3-4-H20",
+            "id": 27,
+            "model": "LDLC Aurore Ci3-4-H20",
             "picture": "https://media.ldlc.com/ld/products/00/04/45/51/LD0004455112_2.jpg",
-            "connector_avalaible": "none",
-            "size_width": 200,
-            "size_height": 200,
-            "is_os_included": true,
-            "is_webcam_included": true,
-            "is_wifi_included": true,
-            "is_vr_ready": false,
-            "garanty_year": 2,
-            "updatedAt": "2017-11-27T22:45:14.975Z",
-            "createdAt": "2017-11-27T22:45:14.975Z",
-            "activity": {
-                "name": "gaming",
-                "description": null
-            },
+            "updated_at": "2018-05-18T13:37:54.957Z",
+            "created_at": "2018-05-18T13:37:54.957Z",
             "os": {
-                "name": "Windows 10",
+                "name": "Aucun",
                 "description": null
             },
-            "keyboards": {
-                "type": "QWERTY",
+            "cpu": {
+                "name": "Intel Core i3-6100H (Dual-Core 2.7 GHz - Cache 3 Mo)",
+                "score": null,
                 "description": null
             },
-            "graphics": {
-                "brand_id": 10,
-                "model": "Intel HD Graphics 5500",
-                "vram": null,
-                "frequency": null,
+            "gpu": {
+                "name": "Intel HD Graphics 530",
+                "score": 500,
                 "description": null
             },
-            "networks": {
-                "name": "Gigabit Ethernet",
-                "description": "1000/100/10"
-            },
-            "display": {
-                "type": "LCD Retina",
-                "resolution": "1920x1080",
-                "size": "13",
-                "refresh_rate": 120,
+            "chipset": {
+                "name": "Mobile Intel HM170 Express",
                 "description": null
             },
-            "disks": {
-                "brand_id": 7,
-                "model": "Samsung SSD 850 EVO",
-                "space": null
-            },
-            "colors": {
-                "name": "Gris",
-                "picker": "#808080"
-            },
-            "brands": {
-                "name": "LDLC",
+            "activity": {
+                "name": "N/A",
                 "description": null
             }
         },
         {
             "id": 3,
-            "model": "Swift 7 SF713-51-M8EJ Or",
-            "designation": "Acer Swift 7 SF713-51-M8EJ Or",
-            "picture": "https://media.ldlc.com/ld/products/00/03/93/45/LD0003934594_2_0004083678.jpg",
-            "connector_avalaible": "none",
-            "size_width": 200,
-            "size_height": 300,
-            "is_os_included": true,
-            "is_webcam_included": false,
-            "is_wifi_included": true,
-            "is_vr_ready": false,
-            "garanty_year": 2,
-            "updatedAt": "2017-11-27T22:45:14.975Z",
-            "createdAt": "2017-11-27T22:45:14.975Z",
-            "activity": {
-                "name": "navigation",
-                "description": null
-            },
+            "model": "LDLC Aurore CI3-8-S1H10-P10",
+            "picture": "https://media.ldlc.com/ld/products/00/04/45/53/LD0004455327_2.jpg",
+            "updated_at": "2018-05-18T13:37:52.795Z",
+            "created_at": "2018-05-18T13:37:52.795Z",
             "os": {
-                "name": "Windows 10",
+                "name": "Windows 10 Professionnel 64 bits",
                 "description": null
             },
-            "keyboards": {
-                "type": "QWERTZ",
+            "cpu": {
+                "name": "Intel Core i3-6100H (Dual-Core 2.7 GHz - Cache 3 Mo)",
+                "score": null,
                 "description": null
             },
-            "graphics": {
-                "brand_id": 12,
-                "model": "GeForce GTX 1080",
-                "vram": null,
-                "frequency": null,
+            "gpu": {
+                "name": "Intel HD Graphics 530",
+                "score": 500,
                 "description": null
             },
-            "networks": {
-                "name": "Fast Ethernet",
-                "description": "100/10"
-            },
-            "display": {
-                "type": "LCD Retina",
-                "resolution": "1920x1080",
-                "size": "13",
-                "refresh_rate": 120,
+            "chipset": {
+                "name": "Mobile Intel HM170 Express",
                 "description": null
             },
-            "disks": {
-                "brand_id": 7,
-                "model": "Samsung SSD 850 EVO",
-                "space": null
-            },
-            "colors": {
-                "name": "Jaune",
-                "picker": "#FFFF00"
-            },
-            "brands": {
-                "name": "Acer",
+            "activity": {
+                "name": "N/A",
                 "description": null
             }
         }
