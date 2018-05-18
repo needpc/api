@@ -134,6 +134,7 @@ module.exports = (sequelize, DataTypes) => {
         computers.belongsTo(models.computers_gpus, { as: 'gpu', onDelete: "CASCADE", foreignKey: 'gpu_id' });
         computers.belongsTo(models.computers_activities, { as: 'activity', onDelete: "CASCADE", foreignKey: 'activity_id' });
         computers.belongsTo(models.computers_chipsets, { as: 'chipset', onDelete: "CASCADE", foreignKey: 'chipset_id' });
+        computers.belongsTo(models.computers_brands, { as: 'brand', onDelete: "CASCADE", foreignKey: 'brand_id' });
         computers.hasMany(models.computers_prices, { as: 'prices', onDelete: 'CASCADE', foreignKey: 'computer_id' });
         models.computers_prices.belongsTo(computers, { as: 'prices', foreignKey: 'computer_id'});
         computers.hasMany(models.computers_disks, { as: 'disks', onDelete: 'CASCADE', foreignKey: 'computer_id' });

@@ -26,12 +26,12 @@ module.exports = {
             }
         }
 
-        // GPU Scoring
-        if (req.query.gpu_score != null && req.query.gpu_score != "") {
-            conditions["$gpu.score$"] = { 
-                    $lte: (parseInt(req.query.gpu_score, 10)+1000), 
-                    $gte: (parseInt(req.query.gpu_score, 10)-1000), 
-            };
+        // Brands
+        if (req.query.brand != null && req.query.brand != "") {
+            conditions["brand_id"] = []
+            for (var i = 0; i < req.query.brand.length; i++) {       
+                conditions["brand_id"].push(req.query.brand[i]);
+            }
         }
             
         // activity
@@ -64,6 +64,14 @@ module.exports = {
             for (var i = 0; i < req.query.gpu.length; i++) {       
                 conditions["gpu_id"].push(req.query.gpu[i]);
             }
+        }
+
+        // GPU Scoring
+        if (req.query.gpu_score != null && req.query.gpu_score != "") {
+            conditions["$gpu.score$"] = { 
+                    $lte: (parseInt(req.query.gpu_score, 10)+1000), 
+                    $gte: (parseInt(req.query.gpu_score, 10)-1000), 
+            };
         }
             
         // Chipsets
