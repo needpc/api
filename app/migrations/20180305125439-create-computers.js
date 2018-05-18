@@ -17,6 +17,15 @@ module.exports = {
         allowNull: true,
         defaultValue: 1
       },
+      brand_id: {
+        type: Sequelize.INTEGER,
+        references: { 
+          model: 'computers_brands', 
+          key: 'id' 
+        },
+        allowNull: true,
+        defaultValue: 1
+      },
       cpu_id: {
         type: Sequelize.INTEGER,
         references: { 

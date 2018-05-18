@@ -3,6 +3,8 @@ var validator = require('validator');
 var path      = require('path');
 var Models    = require(path.join(__dirname, '../../models/index'));
 
+const Op = Models.Sequelize.Op;
+
 module.exports = {
 
     // Get all computers
@@ -17,20 +19,68 @@ module.exports = {
             conditions["model"] = { $like: '%' + req.query.model + '%' };
         
         // OS
-        if (req.query.os != null && req.query.os != "")
-            conditions["os_id"] = { $eq: req.query.os };
+        if (req.query.os != null && req.query.os != "") {
+            conditions["os_id"] = []
+            for (var i = 0; i < req.query.os.length; i++) {       
+                conditions["os_id"].push(req.query.os[i]);
+            }
+        }
 
-        // activity
-        if (req.query.activity != null && req.query.activity != "")
-            conditions["activity_id"] = { $eq: req.query.activity };
+        // Brands
+        if (req.query.brand != null && req.query.brand != "") {
+            conditions["brand_id"] = []
+            for (var i = 0; i < req.query.brand.length; i++) {       
+                conditions["brand_id"].push(req.query.brand[i]);
+            }
+        }
             
-        // Graphics
-        if (req.query.gpu != null && req.query.gpu != "")
-            conditions["gpu_id"] = { $eq: req.query.gpu };
+        // activity
+        if (req.query.activity != null && req.query.activity != "") {
+            conditions["activity_id"] = []
+            for (var i = 0; i < req.query.activity.length; i++) {       
+                conditions["activity_id"].push(req.query.activity[i]);
+            }
+        }
+
+        // CPU
+        if (req.query.cpu != null && req.query.cpu != "") {
+            conditions["cpu_id"] = []
+            for (var i = 0; i < req.query.cpu.length; i++) {       
+                conditions["cpu_id"].push(req.query.cpu[i]);
+            }
+        }
+
+        // CPU Scoring
+        if (req.query.cpu_score != null && req.query.cpu_score != "") {
+            conditions["$cpu.score$"] = { 
+                $lte: (parseInt(req.query.cpu_score, 10)+1000), 
+                $gte: (parseInt(req.query.cpu_score, 10)-1000), 
+            };
+        }
+                   
+        // GPU
+        if (req.query.gpu != null && req.query.gpu != "") {
+            conditions["gpu_id"] = []
+            for (var i = 0; i < req.query.gpu.length; i++) {       
+                conditions["gpu_id"].push(req.query.gpu[i]);
+            }
+        }
+
+        // GPU Scoring
+        if (req.query.gpu_score != null && req.query.gpu_score != "") {
+            conditions["$gpu.score$"] = { 
+                    $lte: (parseInt(req.query.gpu_score, 10)+1000), 
+                    $gte: (parseInt(req.query.gpu_score, 10)-1000), 
+            };
+        }
             
         // Chipsets
-        if (req.query.chipset != null && req.query.chipset != "")
-            conditions["chipset_id"] = { $eq: req.query.chipset };
+        if (req.query.chipset != null && req.query.chipset != "") {
+            conditions["chipset_id"] = []
+            for (var i = 0; i < req.query.chipset.length; i++) {       
+                conditions["chipset_id"].push(req.query.chipset[i]);
+            }
+        }
 
         // Push all relation, search no avalailble
         includes.push(
