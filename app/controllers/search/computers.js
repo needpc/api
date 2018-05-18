@@ -3,6 +3,8 @@ var validator = require('validator');
 var path      = require('path');
 var Models    = require(path.join(__dirname, '../../models/index'));
 
+const Op = Models.Sequelize.Op;
+
 module.exports = {
 
     // Get all computers
@@ -17,20 +19,46 @@ module.exports = {
             conditions["model"] = { $like: '%' + req.query.model + '%' };
         
         // OS
-        if (req.query.os != null && req.query.os != "")
-            conditions["os_id"] = { $eq: req.query.os };
+        if (req.query.os != null) {
+            conditions["os_id"] = []
+            for (var i = 0; i < req.query.os.length; i++) {       
+                conditions["os_id"].push(req.query.os[i]);
+            }
+        }
 
-        // activity
-        if (req.query.activity != null && req.query.activity != "")
-            conditions["activity_id"] = { $eq: req.query.activity };
+        // GPU Scoring
+        // if (req.query.gpu_score != null) {
+        //     conditions["gpu_score"] = { 
+        //         "$computers_gpus.score$": {
+        //             $gte: (req.query.gpu_score+1000), 
+        //             $lte: (req.query.gpu_score-1000),
+        //         }
+        //     };
+        // }
             
+        // activity
+        if (req.query.activity != null && req.query.activity != "") {
+            conditions["activity_id"] = []
+            for (var i = 0; i < req.query.activity.length; i++) {       
+                conditions["activity_id"].push(req.query.activity[i]);
+            }
+        }
+                   
         // Graphics
-        if (req.query.gpu != null && req.query.gpu != "")
-            conditions["gpu_id"] = { $eq: req.query.gpu };
+        if (req.query.gpu != null && req.query.gpu != "") {
+            conditions["gpu_id"] = []
+            for (var i = 0; i < req.query.gpu.length; i++) {       
+                conditions["gpu_id"].push(req.query.gpu[i]);
+            }
+        }
             
         // Chipsets
-        if (req.query.chipset != null && req.query.chipset != "")
-            conditions["chipset_id"] = { $eq: req.query.chipset };
+        if (req.query.chipset != null && req.query.chipset != "") {
+            conditions["chipset_id"] = []
+            for (var i = 0; i < req.query.chipset.length; i++) {       
+                conditions["chipset_id"].push(req.query.chipset[i]);
+            }
+        }
 
         // Push all relation, search no avalailble
         includes.push(
