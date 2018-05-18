@@ -7,6 +7,7 @@ var CSearchComputer   = require(path.join(__dirname, '/controllers/search/comput
 var CSearchOs         = require(path.join(__dirname, '/controllers/search/os'));
 var CSearchGpu        = require(path.join(__dirname, '/controllers/search/gpu'));
 var CSearchCpu        = require(path.join(__dirname, '/controllers/search/cpu'));
+var CSearchBrand      = require(path.join(__dirname, '/controllers/search/brand'));
 var CSearchChipset    = require(path.join(__dirname, '/controllers/search/chipset'));
 var CSearchActivities = require(path.join(__dirname, '/controllers/search/activity'));
 var CSearchquestions  = require(path.join(__dirname, '/controllers/search/ask'));
@@ -40,6 +41,9 @@ module.exports = function(app, passport) {
     
     app.route('/api/v1/search/activity/')
         .get(CSearchActivities.Get);
+
+    app.route('/api/v1/search/brand/')
+        .get(CSearchBrand.Get);
 
     app.route('/api/v1/ask')
         .get(CSearchquestions.GetAsk);
