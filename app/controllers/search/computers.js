@@ -27,14 +27,20 @@ module.exports = {
         }
 
         // GPU Scoring
-        // if (req.query.gpu_score != null) {
-        //     conditions["gpu_score"] = { 
-        //         "$computers_gpus.score$": {
-        //             $gte: (req.query.gpu_score+1000), 
-        //             $lte: (req.query.gpu_score-1000),
-        //         }
-        //     };
-        // }
+        if (req.query.gpu_score != null) {
+            conditions["$gpu.score$"] = { 
+                    $lte: (parseInt(req.query.gpu_score, 10)+1000), 
+                    $gte: (parseInt(req.query.gpu_score, 10)-1000), 
+            };
+        }
+
+        // CPU Scoring
+        if (req.query.cpu_score != null) {
+            conditions["$cpu.score$"] = { 
+                    $lte: (parseInt(req.query.cpu_score, 10)+1000), 
+                    $gte: (parseInt(req.query.cpu_score, 10)-1000), 
+            };
+        }
             
         // activity
         if (req.query.activity != null && req.query.activity != "") {
