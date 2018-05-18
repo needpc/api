@@ -2,64 +2,50 @@
     "error": false,
     "data": [
         {
-            "id": 1,
-            "model": "GET5000",
-            "designation": "GET",
-            "picture": "https://media.ldlc.com/ld/products/00/04/16/74/LD0004167474_2_0004167648.jpg",
-            "connector_avalaible": "HDMI x 1, VGA x 1",
-            "size_width": 100,
-            "size_height": 100,
-            "is_os_included": true,
-            "is_webcam_included": false,
-            "is_wifi_included": false,
-            "is_vr_ready": false,
-            "garanty_year": 2,
-            "updatedAt": "2017-09-04T22:00:00.000Z",
-            "createdAt": "2017-09-03T22:00:00.000Z",
+            "id": 3,
+            "model": "LDLC Aurore CI3-8-S1H10-P10",
+            "picture": "https://media.ldlc.com/ld/products/00/04/45/53/LD0004455327_2.jpg",
+            "connector_available": "",
+            "weight": "",
+            "length": "",
+            "width": "",
+            "height": "",
+            "memory_size": "8 Go",
+            "memory_type": "DDR4",
+            "memory_max_size": "32 Go",
+            "keyboard_type": null,
+            "keyboard_numpad": null,
+            "keyboard_light": null,
+            "screen_type": null,
+            "screen_resolution": null,
+            "screen_refresh_rate": null,
+            "screen_size": null,
+            "screen_format": null,
+            "network": "10/100/1000 Mbps",
+            "webcam": true,
+            "updated_at": "2018-05-18T13:37:52.795Z",
+            "created_at": "2018-05-18T13:37:52.795Z",
             "os": {
-                "name": "Windows 7"
+                "name": "Windows 10 Professionnel 64 bits",
+                "description": null
             },
-            "networks": {
-                "name": "10/100/1000"
+            "cpu": {
+                "name": "Intel Core i3-6100H (Dual-Core 2.7 GHz - Cache 3 Mo)",
+                "score": null,
+                "description": null
             },
-            "keyboards": {
-                "language_iso": "FR_fr",
-                "type": "AZERTY"
+            "gpu": {
+                "name": "Intel HD Graphics 530",
+                "score": 500,
+                "description": null
             },
-            "graphics": {
-                "name": "Nvidia GTX 1070",
-                "vram_giga": 16,
-                "memory_capacities": null,
-                "frequency": 2000
-            },
-            "display": {
-                "type": "LCD",
-                "resolution": "1920x1080",
-                "refresh_rate": 120,
-                "size": 120,
-                "format": "16:10"
-            },
-            "disks": {
-                "disk_main": "512 SSD",
-                "disk_secondary": "1To HDD"
-            },
-            "cpus": {
-                "name": "i7 6700K",
-                "brand": "Intel",
-                "frequency": 3.7
-            },
-            "colors": {
-                "name": "black",
-                "picker": null
-            },
-            "chipsets": {
-                "name": "CTE"
-            },
-            "brands": {
-                "name": "Asus"
+            "chipset": {
+                "name": "Mobile Intel HM170 Express",
+                "description": null
             },
             "activity": {
-                "name": "Games"
+                "name": "N/A",
+                "description": null
             }
         }
     ]
