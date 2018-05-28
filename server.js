@@ -26,13 +26,8 @@ var colors         = require(path.join(__dirname, '/app/services/color'));
 
 var ports = {
     http: process.env.APP_HTTP_PORT || 8080,
-    https: process.env.APP_HTTPS_PORT || 4433
 };
 
-var credentials = {
-    key: fs.readFileSync(path.join(__dirname, '/app/config/ssl/server.key')),
-    cert: fs.readFileSync(path.join(__dirname, '/app/config/ssl/server.crt'))
-};
 
 // Locale app
 app.locals.title = 'My API';
@@ -50,16 +45,7 @@ var logDirectory = process.env.APP_PATH_LOG || path.join(__dirname, 'logs');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
 // Access Logs
-app.use(morgan(':remote-addr :remote-user [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent - :response-time[2] ms"', {
-    skip: function (req, res) { return res.statusCode > 500 },
-    stream: fs.createWriteStream(path.join(logDirectory, 'access.log'))
-}))
-
-// Errors Logs
-app.use(morgan(':remote-addr :remote-user [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent - :response-time[2] ms"', {
-    skip: function (req, res) { return res.statusCode < 500 },
-    stream: fs.createWriteStream(path.join(logDirectory, 'error.log'))
-}))
+app.use(morgan(':remote-addr :remote-user [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent - :response-time[2] ms"'))
 
 // Parse application/json 
 app.use(bodyParser.json());
@@ -110,12 +96,8 @@ require(path.join(__dirname, 'app/services/passport'))(passport);
 console.log(colors.info('RESTful API running, PID : ' + process.pid));
 
 // HTTP/1.1
-http.createServer(function (req, res) {
-    res.writeHead(301, { "Location": "https://" + req.headers['host'] + req.url });
-    res.end();
-}).listen(ports.http, () => { console.log(colors.verbose('Port serveur HTTP (API) : ' + ports.http)); });
-
-// HTTP/2
-httpsServer = spdy.createServer(credentials, app).listen(ports.https, () => { console.log(colors.verbose('Port serveur HTTPS (API) : ' + ports.https)); });
+http.createServer(app).listen(ports.http, () => { 
+    console.log(colors.verbose('Port serveur HTTP (API) : ' + ports.http)); 
+});
 
 module.exports = app;
