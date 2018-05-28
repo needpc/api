@@ -25,10 +25,30 @@ services:
       POSTGRES_PASSWORD: nodejs
     ports:
       - "5432:5432"
+  
+  redis:
+    image: redis:4.0-alpine
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      resources:
+        limits:
+          cpus: '25.000'
+          memory: 1024M
+        reservations:
+          cpus: '25.000'
+          memory: 512M
+    ports:
+      - "6379:6379"
 
   api:
     depends_on:
       - db
+      - redis
     build: ./
     deploy:
       replicas: 1
@@ -48,9 +68,9 @@ services:
       - NODE_ENV=development
       - APP_PATH_LOG=logs
       - APP_SESSION_SECRET=RANDOM
+      - APP_REDIS_HOST=redis
     ports:
       - "80:8080"
-      - "443:4433"
 
 volumes:
     db_data:
