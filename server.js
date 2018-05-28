@@ -1,10 +1,7 @@
 // Framework ExpressJS
 var express        = require('express');
 var app            = express();
-
-// HTTP/1.1 ou HTTP/2 (spdy)
 var http           = require('http');
-var spdy		   = require('spdy');
 
 // Packages
 var path           = require('path');
@@ -21,7 +18,7 @@ var helmet         = require("helmet");
 
 // services avalaible
 var colors         = require(path.join(__dirname, '/app/services/color'));
-//var redis          = require(path.join(__dirname, '/app/services/redis'))
+var redis          = require(path.join(__dirname, '/app/services/redis'))
 
 
 var ports = {
