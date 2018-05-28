@@ -1,6 +1,6 @@
 // Redis client
 var redis = require('redis');
-var colors = require('color');
+var colors = require('./color');
 
 var config_redis = {
     host: process.env.APP_REDIS_HOST || '127.0.0.1',
