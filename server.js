@@ -15,16 +15,11 @@ var expressSession = require('express-session');
 var fs             = require('fs');
 var compression    = require("compression");
 var helmet         = require("helmet");
-
-// services avalaible
 var colors         = require(path.join(__dirname, '/app/services/color'));
-var redis          = require(path.join(__dirname, '/app/services/redis'))
-
 
 var ports = {
     http: process.env.APP_HTTP_PORT || 8080,
 };
-
 
 // Locale app
 app.locals.title = 'My API';
@@ -88,11 +83,7 @@ require(path.join(__dirname, 'app/routes'))(app, passport);
 require(path.join(__dirname, 'app/services/passport'))(passport);
 
 // Start app ===============================================
-// Change http to https
-
 console.log(colors.info('RESTful API running, PID : ' + process.pid));
-
-// HTTP/1.1
 http.createServer(app).listen(ports.http, () => { 
     console.log(colors.verbose('Port serveur HTTP (API) : ' + ports.http)); 
 });
