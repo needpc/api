@@ -8,9 +8,21 @@ module.exports = {
     // Search All CPU avalaible
     Get: function(req, res)
     {
+        conditions = {};
+        
+        // check if query name is not null
+        if (req.query.name != null)
+            conditions["name"] = { $like: req.query.name + '%' };
+            
         // Request Sequelize
         Models["computers_chipsets"].findAll({ 
-            attributes: ['id', 'name'],
+            attributes: [
+                'id', 
+                'name'
+            ],
+            where: {
+                $and: conditions,
+            },
         }).then(function(object) {
                 error.http_success(req, res, { code: 200, data: object });
         }).error(function(err) {

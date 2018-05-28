@@ -92,6 +92,13 @@ baseUri: https://www.needpc.com/api/{version}
                 example: !include ./errors/500.json
   /gpu:
     get:
+      queryParameters:
+        name:
+          displayName: Name
+          type: string
+          description: Carte graphique a rechercher (PostgreSQL Like)
+          example: Nvidia Geforce
+          required: false
       responses:
         200:
           description: Call
@@ -152,6 +159,13 @@ baseUri: https://www.needpc.com/api/{version}
               example: !include ./errors/500.json
   /cpu:
     get:
+      queryParameters:
+        name:
+          displayName: Name
+          type: string
+          description: CPU a rechercher (PostgreSQL Like)
+          example: Intel Xeon
+          required: false
       responses:
         200:
           description: Call
@@ -167,6 +181,13 @@ baseUri: https://www.needpc.com/api/{version}
               example: !include ./errors/500.json
   /activity:
     get:
+      queryParameters:
+        name:
+          displayName: Name
+          type: string
+          description: Activite a rechercher (PostgreSQL Like)
+          example: Gamer
+          required: false
       responses:
         200:
           description: Call

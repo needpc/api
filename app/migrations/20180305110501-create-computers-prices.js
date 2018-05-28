@@ -24,6 +24,10 @@ module.exports = {
         },
         allowNull: false
       },
+      last_price: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       pricing: {
         type: Sequelize.HSTORE,
         allowNull: true

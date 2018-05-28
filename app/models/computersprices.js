@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    last_price: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     pricing: {
       type: DataTypes.HSTORE,
       allowNull: false
@@ -29,7 +33,10 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     classMethods: {
       associate: function(models) {
-        computers_prices.belongsTo(models.computers_traders, { onDelete: 'CASCADE', foreignKey: 'trader_id' });
+        computers_prices.belongsTo(models.computers_traders, { 
+          onDelete: 'CASCADE', 
+          foreignKey: 'trader_id' 
+        });
       }
     }
   });
