@@ -25,25 +25,25 @@ module.exports = function(app, passport) {
         .get(CSearchComputer.Get);
     
     app.route('/api/v1/search/computers/:id')
-        .get(CSearchComputer.GetId);
-    
+        .get(CSearchComputer.GetCacheId, CSearchComputer.GetId);
+
     app.route('/api/v1/search/os/')
-        .get(CSearchOs.Get);
+        .get(CSearchOs.GetCache, CSearchOs.Get);
     
     app.route('/api/v1/search/gpu/')
-        .get(CSearchGpu.Get);
+        .get(CSearchGpu.GetCache, CSearchGpu.Get);
     
     app.route('/api/v1/search/cpu/')
-        .get(CSearchCpu.Get);
+        .get(CSearchCpu.GetCache, CSearchCpu.Get);
 
     app.route('/api/v1/search/chipset/')
-        .get(CSearchChipset.Get);
+        .get(CSearchChipset.GetCache, CSearchChipset.Get);
     
     app.route('/api/v1/search/activity/')
-        .get(CSearchActivities.Get);
+        .get(CSearchActivities.GetCache, CSearchActivities.Get);
 
     app.route('/api/v1/search/brand/')
-        .get(CSearchBrand.Get);
+        .get(CSearchBrand.GetCache, CSearchBrand.Get);
 
     app.route('/api/v1/ask')
         .get(CSearchquestions.GetAsk);
