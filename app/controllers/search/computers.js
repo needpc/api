@@ -2,6 +2,7 @@ var error     = require('../../controllers/error');
 var validator = require('validator');
 var path      = require('path');
 var Models    = require(path.join(__dirname, '../../models/index'));
+var redis     = require(path.join(__dirname, '../../services/redis'));
 
 const Op = Models.Sequelize.Op;
 
@@ -300,14 +301,32 @@ module.exports = {
             limit: max_limit
         })
         .then(function(computers){
-            if (!computers)
-                error.http_error(req, res, { code: 404 });
-            else
-                error.http_success(req, res, { code: 200, data: computers });
+            redis.setex('computer-'+req.params.id, 3600, JSON.stringify(computers));
+            error.http_success(req, res, { 
+                code: 200, 
+                data: computers 
+            });
         })
         .error(function(err) {
             console.log('Error occured' + err);
-            error.http_error(req, res, { code: 500 });
+            error.http_error(req, res, { 
+                code: 500 
+            });
          })
     },
+
+    GetCacheId: function(req, res, next) {
+        redis.get("computer-"+req.params.id, function (err, data) {
+            if (err) throw err;
+        
+            if (data != null) {
+                error.http_success(req, res, { 
+                    code: 200, 
+                    data: JSON.parse(data) 
+                });
+            } else {
+                next();
+            }
+        });
+    }
 }
