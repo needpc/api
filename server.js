@@ -32,10 +32,6 @@ app.locals.email = 'me@myapi.com';
 // expose favicon & robots.txt & docs
 app.use('/', express.static(path.join(__dirname, '/public')));
 
-// Show logs in console
-var logDirectory = process.env.APP_PATH_LOG || path.join(__dirname, 'logs');
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-
 // Access Logs
 app.use(morgan(':remote-addr :remote-user [:date[web]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent - :response-time[2] ms"'))
 
