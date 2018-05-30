@@ -2,27 +2,26 @@
   "development": {
     "username": "node",
     "password": "nodejs",
-    "database": "devnode",
-    "host": "localhost",
+    "database": "dev-node",
+    "host": "db",
     "dialect": "postgres",
     "logging": false,
     "ssl": false
   },
   "staging": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "logging": true,
+    "username": "node",
+    "password": "nodejs",
+    "database": "dev-node",
+    "host": "db",
+    "dialect": "postgres",
     "ssl": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
+    "username": "node",
+    "password": "nodejs",
+    "database": "dev-node",
+    "host": "db",
+    "dialect": "postgres",
     "ssl": false
   }
 }
