@@ -46,10 +46,10 @@ services:
       - "6379:6379"
 
   api:
+    image: quay.io/perriea/needpc-api:latest
     depends_on:
       - db
       - redis
-    build: ./
     deploy:
       replicas: 1
       restart_policy:
@@ -66,7 +66,6 @@ services:
           memory: 450M
     environment:
       - NODE_ENV=development
-      - APP_PATH_LOG=logs
       - APP_SESSION_SECRET=RANDOM
       - APP_REDIS_HOST=redis
     ports:
