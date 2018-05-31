@@ -6,7 +6,7 @@ var Models    = require(path.join(__dirname, '../../models/index'));
 module.exports = {
 
     // Get all question (general || domain)
-    GetAsk: function (req, res) {
+    Get: function (req, res) {
 
         conditions = {};
 
