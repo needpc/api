@@ -10,7 +10,8 @@ var CSearchCpu        = require(path.join(__dirname, '/controllers/search/cpu'))
 var CSearchBrand      = require(path.join(__dirname, '/controllers/search/brand'));
 var CSearchChipset    = require(path.join(__dirname, '/controllers/search/chipset'));
 var CSearchActivities = require(path.join(__dirname, '/controllers/search/activity'));
-var CSearchquestions  = require(path.join(__dirname, '/controllers/search/ask'));
+var CSearchPrice      = require(path.join(__dirname, '/controllers/search/prices'));
+var CSearchAsk        = require(path.join(__dirname, '/controllers/search/ask'));
 
 module.exports = function(app, passport) {
 
@@ -45,8 +46,11 @@ module.exports = function(app, passport) {
     app.route('/api/v1/search/brand/')
         .get(CSearchBrand.GetCache, CSearchBrand.Get);
 
+    app.route('/api/v1/search/price/:id')
+        .get(CSearchPrice.GetCacheId, CSearchPrice.GetId);
+
     app.route('/api/v1/ask')
-        .get(CSearchquestions.GetAsk);
+        .get(CSearchAsk.Get);
     //////////////////////////////////////////////
 
     // =====================================

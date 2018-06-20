@@ -3,6 +3,9 @@ version: '3'
 services:
   db:
     image: postgres:9.6.9-alpine
+    hostname: db
+    labels:
+      - traefik.enable=false
     volumes:
       - db_data:/var/lib/postgresql
     deploy:
@@ -23,11 +26,17 @@ services:
       POSTGRES_DB: dev-node
       POSTGRES_USER: node
       POSTGRES_PASSWORD: nodejs
+    networks:
+      - db-private
+      - app-private
     ports:
       - "5432:5432"
   
   redis:
     image: redis:4.0-alpine
+    hostname: redis
+    labels:
+      - traefik.enable=false
     deploy:
       replicas: 1
       restart_policy:
@@ -42,11 +51,21 @@ services:
         reservations:
           cpus: '25.000'
           memory: 512M
+    networks:
+      - cache-private
+      - app-private
     ports:
       - "6379:6379"
 
   api:
     image: quay.io/perriea/needpc-api:latest
+    hostname: api
+    labels:
+      - traefik.enable=true
+      - traefik.backend=api
+      - traefik.frontend.rule=Host:api.needpc.fr
+      - traefik.docker.network=app-private
+      - traefik.port=8080
     depends_on:
       - db
       - redis
@@ -66,10 +85,46 @@ services:
           memory: 450M
     environment:
       - NODE_ENV=development
-      - APP_SESSION_SECRET=RANDOM
+      - APP_SESSION_SECRET=RANsDOM
       - APP_REDIS_HOST=redis
+    networks:
+      - app-private
     ports:
-      - "80:8080"
+      - "8000:8080"
+
+  traefik:
+    image: perriea/alpine-traefik:3.7
+    hostname: traefik
+    labels:
+      - "traefik.enable=false"
+    depends_on:
+      - api
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 1
+        window: 120s
+      resources:
+        limits:
+          cpus: '20.000'
+          memory: 512M
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - public
+      - app-private
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
 
 volumes:
-    db_data:
+    db_data: {}
+
+networks:
+  public: {}
+  app-private: {}
+  db-private: {}
+  cache-private: {}
