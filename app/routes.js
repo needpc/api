@@ -20,36 +20,36 @@ module.exports = function(app, passport) {
     });
 
     //////////////////////////////////////////////
-    // Search all components
+    // SEARCH
     //////////////////////////////////////////////
-    app.route('/api/v1/search/computers/')
+    app.route('/v1/search/computers/')
         .get(CSearchComputer.Get);
     
-    app.route('/api/v1/search/computers/:id')
+    app.route('/v1/search/computers/:id')
         .get(CSearchComputer.GetCacheId, CSearchComputer.GetId);
 
-    app.route('/api/v1/search/os/')
+    app.route('/v1/search/os/')
         .get(CSearchOs.GetCache, CSearchOs.Get);
     
-    app.route('/api/v1/search/gpu/')
+    app.route('/v1/search/gpu/')
         .get(CSearchGpu.GetCache, CSearchGpu.Get);
     
-    app.route('/api/v1/search/cpu/')
+    app.route('/v1/search/cpu/')
         .get(CSearchCpu.GetCache, CSearchCpu.Get);
 
-    app.route('/api/v1/search/chipset/')
+    app.route('/v1/search/chipset/')
         .get(CSearchChipset.GetCache, CSearchChipset.Get);
     
-    app.route('/api/v1/search/activity/')
+    app.route('/v1/search/activity/')
         .get(CSearchActivities.GetCache, CSearchActivities.Get);
 
-    app.route('/api/v1/search/brand/')
+    app.route('/v1/search/brand/')
         .get(CSearchBrand.GetCache, CSearchBrand.Get);
 
-    app.route('/api/v1/search/price/:id')
+    app.route('/v1/search/price/:id')
         .get(CSearchPrice.GetCacheId, CSearchPrice.GetId);
 
-    app.route('/api/v1/ask')
+    app.route('/v1/ask')
         .get(CSearchAsk.Get);
     //////////////////////////////////////////////
 
