@@ -2,6 +2,7 @@ var error     = require('../../controllers/error');
 var validator = require('validator');
 var path      = require('path');
 var Models    = require(path.join(__dirname, '../../models/index'));
+var redis     = require(path.join(__dirname, '../../services/redis'));
 
 module.exports = {
 
@@ -16,7 +17,7 @@ module.exports = {
             ],
             attributes: [
                 'last_price', 
-                'price',
+                'pricing',
                 'url',
                 'created_at',
                 'updated_at'
@@ -33,10 +34,10 @@ module.exports = {
         });
     },
 
-    GetCacheId: function(req, res)
+    GetCacheId: function(req, res, next)
     {
         redis.get("price-"+req.params.id, function (err, data) {
-            if (err) throw err;
+            // if (err) throw err;
         
             if (data != null) {
                 error.http_success(req, res, { 
