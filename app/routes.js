@@ -14,11 +14,7 @@ var CSearchPrice      = require(path.join(__dirname, '/controllers/search/prices
 var CSearchAsk        = require(path.join(__dirname, '/controllers/search/ask'));
 
 module.exports = function(app, passport) {
-
-    app.get('/', function (req, res) {
-        CError.http_success(req, res, { code: 200, message: "Hello World !" });
-    });
-
+    
     //////////////////////////////////////////////
     // SEARCH
     //////////////////////////////////////////////
