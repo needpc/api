@@ -14,9 +14,6 @@ RUN npm install -g npm
 # Install packages
 RUN npm install
 
-# Generate doc
-RUN npm run doc:generate
-
 EXPOSE 8080
 
 ENTRYPOINT ["npm", "start"]
