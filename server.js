@@ -50,7 +50,7 @@ app.use(cookieParser());
 // Accept cross domain *
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.needpc.fr');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.needpc.fr,https://m.needpc.fr');
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, DELETE');
     // Request headers you wish to allow
