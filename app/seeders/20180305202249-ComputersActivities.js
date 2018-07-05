@@ -9,11 +9,19 @@ module.exports = {
         },
         { 
           name: 'Gamer',
-          description: null 
+          description: "Grand joueur de AAA ? Cette categorie est faite pour vous !" 
         },
         { 
           name: 'Bureautique',
-          description: null 
+          description: "Vous utilisez votre machine pour naviguer, faire vos comptes ? Choisissez cette categorie !" 
+        },
+        { 
+          name: 'Graphiste/Montage Video',
+          description: "Un amateur retouche d'images ou videos ?"
+        },
+        {
+          name: 'Multimedia',
+          description: "Consommateur de services de Streaming ? Trouvez votre PC en choissant cette categorie !"
         },
       ], {});
   },

@@ -15,6 +15,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    memory_type: {
+      type: DataTypes.STRING(256),
+      allowNull: true
+    },
+    max_memory: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     description: {
       type: DataTypes.STRING(1024),
       allowNull: false
