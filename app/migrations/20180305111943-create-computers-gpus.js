@@ -13,6 +13,14 @@ module.exports = {
         allowNull: false
       },
       score: {
+        type: Sequelize.FLOAT,
+        allowNull: true
+      },
+      memory_type: {
+        type: Sequelize.STRING(256),
+        allowNull: true
+      },
+      max_memory: {
         type: Sequelize.INTEGER,
         allowNull: true
       },
