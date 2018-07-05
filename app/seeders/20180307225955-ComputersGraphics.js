@@ -8,7 +8,7 @@ module.exports = {
         description: null
       },
       { 
-        name: 'Aucun',
+        name: 'Aucune',
         description: null
       }
     ], {});

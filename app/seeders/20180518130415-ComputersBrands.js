@@ -7,7 +7,7 @@ module.exports = {
         name: 'N/A' 
       },
       { 
-        name: 'Aucun' 
+        name: 'Aucune' 
       },
     ], {});
   },
