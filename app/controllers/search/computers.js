@@ -25,6 +25,23 @@ module.exports = {
             }
         }
 
+        // Screen
+        if (req.query.screen != null && req.query.screen != "") {
+            conditions["screen_size"] = []
+            for (var i = 0; i < req.query.screen.length; i++) {
+                if (req.query.screen[i] > 11) {
+                    conditions["screen_size"].push(req.query.screen[i]);
+                }
+            }
+        }
+
+        // Webcam
+        if (req.query.webcam != null && req.query.webcam != "") {
+            if (req.query.webcam == "true" || req.query.webcam == "false") {
+                conditions["webcam"] = req.query.webcam;
+            }
+        }
+
         // Brands
         if (req.query.brand != null && req.query.brand != "") {
             conditions["brand_id"] = []
@@ -52,14 +69,14 @@ module.exports = {
         // CPU Scoring
         if (req.query.cpu_score != null && req.query.cpu_score != "") {
             conditions["$cpu.score$"] = {
-                $lte: (parseInt(req.query.cpu_score, 10) + 1000),
-                $gte: (parseInt(req.query.cpu_score, 10) - 1000),
+                $gte: (parseInt(req.query.cpu_score, 10) - 200),
+                $lte: (parseInt(req.query.cpu_score, 10) + 200),
             };
         }
 
         // GPU
         if (req.query.gpu != null && req.query.gpu != "") {
-            conditions["gpu_id"] = []
+            conditions["gpu_id"] = ["NULL"]
             for (var i = 0; i < req.query.gpu.length; i++) {
                 conditions["gpu_id"].push(req.query.gpu[i]);
             }
@@ -68,8 +85,8 @@ module.exports = {
         // GPU Scoring
         if (req.query.gpu_score != null && req.query.gpu_score != "") {
             conditions["$gpu.score$"] = {
-                $lte: (parseInt(req.query.gpu_score, 10) + 1000),
-                $gte: (parseInt(req.query.gpu_score, 10) - 1000),
+                $gte: (parseInt(req.query.gpu_score, 10) - 3),
+                $lte: (parseInt(req.query.gpu_score, 10) + 5),
             };
         }
 
@@ -123,11 +140,12 @@ module.exports = {
                 as: "activity",
                 attributes: {
                     exclude: [
-                        'id'
+                        'id',
+                        'description'
                     ]
                 },
                 required: false
-            },
+            }, 
             // { 
             //     model: Models['computers_disks'], 
             //     attributes: { 

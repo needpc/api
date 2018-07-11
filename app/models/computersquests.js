@@ -19,12 +19,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(512),
       allowNull: false
     },
-    domain: {
-      type: DataTypes.STRING(16),
-      allowNull: true
-    },
     created_at: DataTypes.DATE,
     updated_at: DataTypes.DATE,
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
   }, {
     timestamps: false,
     classMethods: {

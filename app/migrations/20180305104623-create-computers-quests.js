@@ -24,12 +24,13 @@ module.exports = {
 		    type: Sequelize.STRING(512),
         allowNull: false
       },
-      domain: {
-        type: Sequelize.STRING(16),
-        allowNull: true
-      },
       created_at: Sequelize.DATE,
       updated_at: Sequelize.DATE,
+      active: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+      },
     });
   },
   down: (queryInterface, Sequelize) => {
