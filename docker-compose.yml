@@ -59,6 +59,7 @@ services:
 
   api:
     image: quay.io/perriea/needpc-api:latest
+    build: .
     hostname: api
     labels:
       - traefik.enable=true
