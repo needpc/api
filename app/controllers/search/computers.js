@@ -67,35 +67,38 @@ module.exports = {
         }
 
         // CPU Scoring
-        if (req.query.cpu_score != null && req.query.cpu_score != "") {
+        if ((req.query.cpu_score_min != null && req.query.cpu_score_min != "") &&
+            (req.query.cpu_score_max != null && req.query.cpu_score_max != "")) {
             conditions["$cpu.score$"] = {
-                $gte: (parseInt(req.query.cpu_score, 10) - 200),
-                $lte: (parseInt(req.query.cpu_score, 10) + 200),
+                $gte: (parseInt(req.query.cpu_score_min, 10)),
+                $lte: (parseInt(req.query.cpu_score_max, 10)),
             };
         }
 
         // GPU
         if (req.query.gpu != null && req.query.gpu != "") {
-            conditions["gpu_id"] = ["NULL"]
+            conditions["gpu_id"] = []
             for (var i = 0; i < req.query.gpu.length; i++) {
                 conditions["gpu_id"].push(req.query.gpu[i]);
             }
         }
 
         // GPU Scoring
-        if (req.query.gpu_score != null && req.query.gpu_score != "") {
+        if ((req.query.gpu_score_min != null && req.query.gpu_score_min != "") &&
+            (req.query.gpu_score_max != null && req.query.gpu_score_max != "")) {
             conditions["$gpu.score$"] = {
-                $gte: (parseInt(req.query.gpu_score, 10) - 3),
-                $lte: (parseInt(req.query.gpu_score, 10) + 5),
+                $gte: (parseInt(req.query.gpu_score_min, 10)),
+                $lte: (parseInt(req.query.gpu_score_max, 10)),
             };
         }
 
-        // Chipsets
-        if (req.query.chipset != null && req.query.chipset != "") {
-            conditions["chipset_id"] = []
-            for (var i = 0; i < req.query.chipset.length; i++) {
-                conditions["chipset_id"].push(req.query.chipset[i]);
-            }
+        // GPU Scoring
+        if ((req.query.weight_max != null && req.query.weight_max != "") &&
+            (req.query.weight_min != null && req.query.weight_min != "")) {
+            conditions["weight"] = {
+                $gte: req.query.weight_min,
+                $lte: req.query.weight_max,
+            };
         }
 
         // Push all relation, search no avalailble
