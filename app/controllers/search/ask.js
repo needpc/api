@@ -8,7 +8,9 @@ module.exports = {
     // Get all question (general || domain)
     Get: function (req, res) {
 
-        conditions = {};
+        conditions = {
+            active: true
+        };
 
         // Include relations
         includes = [
@@ -17,7 +19,8 @@ module.exports = {
                 as: "activity",
                 attributes: { 
                     exclude: [
-                        'id', 
+                        'id',
+                        'description'
                     ] 
                 } 
             },
@@ -36,9 +39,13 @@ module.exports = {
         ]
 
         // query activity
-        if (req.query.activity != null && req.query.activity != "")
-            conditions["activity_id"] = { $eq: req.query.activity };
-
+        if (req.query.activity != null && req.query.activity != "") {
+            conditions["activity_id"] = []
+            for (var i = 0; i < req.query.activity.length; i++) {
+                conditions["activity_id"].push(req.query.activity[i]);
+            }
+        }
+            
         // query activity
         if (req.query.rank != null && req.query.rank != "")
             conditions["rank"] = { $eq: req.query.rank };
@@ -53,7 +60,8 @@ module.exports = {
                 exclude: [
                     'activity_id',
                     'created_at', 
-                    'updated_at'
+                    'updated_at',
+                    'active'
                 ] 
             }
         }).then(function (question) {
