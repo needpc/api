@@ -7,10 +7,8 @@ module.exports = {
 
     // Get all question (general || domain)
     Get: function (req, res) {
-
-        conditions = {
-            active: true
-        };
+        includes = [];
+        conditions = {};
 
         // Include relations
         includes = [
@@ -55,6 +53,7 @@ module.exports = {
             include: includes,
             where: {
                 $and: conditions,
+                active: true
             },
             attributes: { 
                 exclude: [
