@@ -96,8 +96,8 @@ module.exports = {
         if ((req.query.weight_max != null && req.query.weight_max != "") &&
             (req.query.weight_min != null && req.query.weight_min != "")) {
             conditions["weight"] = {
-                $gte: req.query.weight_min,
-                $lte: req.query.weight_max,
+                $gte: (parseInt(req.query.weight_min, 10)),
+                $lte: (parseInt(req.query.weight_max, 10)),
             };
         }
 
