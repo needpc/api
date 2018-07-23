@@ -101,6 +101,15 @@ module.exports = {
             };
         }
 
+        // GPU Scoring
+        if ((req.query.price_max != null && req.query.price_max != "") &&
+            (req.query.price_min != null && req.query.price_min != "")) {
+            conditions["weight"] = {
+                $gte: (parseInt(req.query.price_min, 10)),
+                $lte: (parseInt(req.query.price_max, 10)),
+            };
+        }
+
         // Push all relation, search no avalailble
         includes.push({
                 model: Models["computers_os"],
@@ -149,18 +158,28 @@ module.exports = {
                 },
                 required: false
             }, 
-            // { 
-            //     model: Models['computers_disks'], 
-            //     attributes: { 
-            //         exclude: [
-            //             'id'
-            //         ] 
-            //     },
-            //     where: {
-            //         $and: conditions,
-            //     },
-            //     required: false 
-            // }
+            { 
+                model: Models['computers_prices'], 
+                as: 'prices',
+                attributes: { 
+                    exclude: [
+                        'id', 
+                        'computer_id', 
+                        'trader_id', 
+                        'updated_at'
+                    ] 
+                }, 
+                include: [
+                    {
+                        model: Models['computers_traders'],
+                        attributes: [
+                            'name'
+                        ],
+                        required: false
+                    }
+                ], 
+                required: false 
+            },
         )
 
         // request
@@ -190,7 +209,7 @@ module.exports = {
             })
     },
 
-    // Get all computers
+    // Get all computers in redis cache
     GetId: function(req, res) {
         includes = []
         conditions = {};
@@ -199,76 +218,73 @@ module.exports = {
         // Push all relation, search no avalailble
         includes.push({
                 model: Models["computers_os"],
-                as: 'os',
+                as: "os",
                 attributes: {
                     exclude: [
                         'id'
                     ]
-                }
+                },
+                required: false
             }, {
                 model: Models["computers_cpus"],
-                as: 'cpu',
+                as: "cpu",
                 attributes: {
                     exclude: [
                         'id'
                     ]
-                }
+                },
+                required: false
             }, {
                 model: Models["computers_gpus"],
-                as: 'gpu',
+                as: "gpu",
                 attributes: {
                     exclude: [
                         'id'
                     ]
-                }
+                },
+                required: false
             }, {
                 model: Models["computers_chipsets"],
-                as: 'chipset',
+                as: "chipset",
                 attributes: {
                     exclude: [
                         'id'
                     ]
-                }
+                },
+                required: false
             }, {
                 model: Models["computers_activities"],
-                as: 'activity',
+                as: "activity",
                 attributes: {
                     exclude: [
-                        'id'
+                        'id',
+                        'description'
                     ]
-                }
+                },
+                required: false
+            }, 
+            { 
+                model: Models['computers_prices'], 
+                as: 'prices',
+                attributes: { 
+                    exclude: [
+                        'id', 
+                        'computer_id', 
+                        'trader_id', 
+                        'updated_at'
+                    ] 
+                }, 
+                include: [
+                    {
+                        model: Models['computers_traders'],
+                        attributes: [
+                            'name'
+                        ],
+                        required: false
+                    }
+                ], 
+                required: false 
             },
-            // { 
-            //     model: Models['computers_prices'], 
-            //     as: 'prices',
-            //     attributes: { 
-            //         exclude: [
-            //             'id', 
-            //             'computer_id', 
-            //             'trader_id', 
-            //             'updated_at'
-            //         ] 
-            //     }, 
-            //     include: [
-            //         {
-            //             model: Models['computers_traders'],
-            //             attributes: [
-            //                 'name'
-            //             ],
-            //             required: true
-            //         }
-            //     ], 
-            //     required: false 
-            // },
-            // { 
-            //     model: Models['computers_disks'], 
-            //     attributes: { 
-            //         exclude: [
-            //             'id'
-            //         ] 
-            //     },
-            //     required: false 
-            // },
         )
 
         // request
